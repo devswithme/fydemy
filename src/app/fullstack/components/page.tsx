@@ -1,9 +1,9 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
 export const metadata: Metadata = {
-	title: 'Frontend Introduction',
+	title: 'Fullstack Components',
 	description:
-		'Belajar frontend adalah hal yang menyenangkan dan menjadi fondasi untuk pembelajaran kita kedepannya',
+		'Komponen di ReactJS adalah bagian yang membentuk antarmuka pengguna (UI).',
 }
 
 export default function ApiReference() {
@@ -36,7 +36,7 @@ export default function ApiReference() {
 				alt='7.png'
 				width={1600}
 				height={900}
-				className='w-1/2 object-cover object-top rounded'
+				className='w-full sm:w-1/2 object-cover object-top rounded'
 			/>
 			<p>
 				Setelah kamu membuat folder dan file, disinilah kamu akan
@@ -47,7 +47,7 @@ export default function ApiReference() {
 				alt='8.png'
 				width={1600}
 				height={900}
-				className='w-1/2 object-cover object-top rounded'
+				className='w-full sm:w-1/2 object-cover object-top rounded'
 			/>
 			<p>
 				Nah disitu aku buat component bernama Fysite, di dalam
@@ -60,7 +60,7 @@ export default function ApiReference() {
 				alt='9.png'
 				width={1600}
 				height={900}
-				className='w-1/2 object-cover object-top rounded'
+				className='w-full sm:w-1/2 object-cover object-top rounded'
 			/>
 			<p>
 				Setelah aku menambahkan paragraf pasti pada bertanya kok belum

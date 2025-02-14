@@ -1,31 +1,56 @@
+import { Metadata } from 'next'
 import Link from 'next/link'
 import React from 'react'
+
+export const metadata: Metadata = {
+	title: 'Home',
+	description:
+		'Halo, selamat datang! Terima kasih sudah membeli modul ini.',
+}
 
 export default function Page() {
 	return (
 		<main className='max-w-3xl mx-auto prose'>
 			<h1>Fysite Academy</h1>
 			<p>
-				Halo, selamat datang! Ini adalah kelas <b>gratis/trial</b>{' '}
-				untuk kalian belajar website. Bagi yang bingung mulai dari
-				mana, gimana cara kerjanya, yuk langsung aja kita lihat
-				materinya!
+				Halo, selamat datang! Terima kasih sudah membeli modul ini,
+				Ini adalah kelas berbayar untuk kalian belajar website dari 0
+				hingga fullstack. Bagi yang bingung mulai dari mana, gimana
+				cara kerjanya, yuk langsung aja kita lihat materinya!
 			</p>
 			<blockquote>
 				Fyi: Kalau kalian bingung dengan konsepnya dan mau dapat
-				mentor, kami menawarkan versi pronya fysite academy wkwk.
-				Order disini:{' '}
-				<a href='https://www.academy.fysite.id'>Fysite academy</a>.
+				mentor, review, + sertifikat, kami menawarkan untuk anda
+				upgrade melalui{' '}
+				<a href='https://academy.fysite.id'>academy.fysite.id</a>.
 			</blockquote>
-			<h2>Daftar isi</h2>
-			<ul>
-				<li>Pengenalan frontend yaitu HTML dan CSS</li>
-				<li>
-					Konsep pemograman Javascript dan keterhubungannya ke website
-				</li>
-				<li>List projekan atau praktek yang bisa dinilai langsung</li>
-			</ul>
-			<Link href='/frontend/introduction'>Lanjut</Link>
+			<p>
+				Disini kalian akan mendapatkan materi yang singkat saja jadi
+				ngga ada basa basi dan dengan konsep project-based learning!
+				Tertarik kah? Langsung aja kita mulai perjalanan kita ini
+				menelusuri dunia web development.
+			</p>
+			<h2>Daftar Isi</h2>
+			<pre>
+				<code>{`UI/UX Design
+├── Warm up & Introduction
+├── Frontend Concept
+└── Quiz & Projects: Translate design into front-end code
+Front-End (Free)
+├── Introduction & Syntax
+└── Quiz & Projects: Procedure Text & Portfolio Section
+Back-End
+├── Introduction & Syntax
+├── Implementation
+└── Quiz & Projects: Library API Improvement
+Full-Stack
+├── React.js Basic Knowledge & Quiz
+└── Project: TVMaze & Deploy`}</code>
+			</pre>
+			<p>
+				Yuk kita mulai!{' '}
+				<Link href='/frontend/warm-up'>{`Let's start your journey`}</Link>
+			</p>
 		</main>
 	)
 }

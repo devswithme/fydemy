@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 export const metadata: Metadata = {
-	title: 'Frontend Introduction',
+	title: 'Fullstack React.js',
 	description:
-		'Belajar frontend adalah hal yang menyenangkan dan menjadi fondasi untuk pembelajaran kita kedepannya',
+		'React.js adalah pustaka JavaScript untuk membangun antarmuka pengguna (UI) yang interaktif',
 }
 
 export default function ApiReference() {

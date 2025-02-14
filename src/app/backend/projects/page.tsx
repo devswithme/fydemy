@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 
 export const metadata: Metadata = {
-	title: 'Frontend Projects',
+	title: 'Backend Projects',
 	description:
-		'Untuk projekan kali ini, kalian diharapkan sudah mengerti dulu konsep dasarnya',
+		'Selamat datang di projek akhir kita!, disini kamu hanya disuruh untuk menyempurnakan program library API yang telah kita buat tadi.',
 }
 
 export default function Home() {

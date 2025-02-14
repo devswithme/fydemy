@@ -22,13 +22,48 @@ import {
 	Download,
 	FastForward,
 	FileQuestion,
+	Forward,
 	Frame,
+	LogIn,
 	Printer,
+	Rocket,
 	SquareTerminal,
+	Wand,
+	Waypoints,
 	Workflow,
 } from 'lucide-react'
 
 const navItems = [
+	{
+		name: 'UI/UX Design',
+		items: [
+			{
+				title: 'Warm up',
+				url: '/uiux/warm-up',
+				icon: LogIn,
+			},
+			{
+				title: 'Introduction',
+				url: '/uiux/introduction',
+				icon: Frame,
+			},
+			{
+				title: 'Frontend',
+				url: '/uiux/frontend',
+				icon: Code2,
+			},
+			{
+				title: 'Quiz',
+				url: '/uiux/quiz',
+				icon: FileQuestion,
+			},
+			{
+				title: 'Projects',
+				url: '/uiux/projects',
+				icon: Workflow,
+			},
+		],
+	},
 	{
 		name: 'Front-End',
 		items: [
@@ -51,26 +86,6 @@ const navItems = [
 				title: 'Projects',
 				url: '/frontend/projects',
 				icon: Workflow,
-			},
-		],
-	},
-	{
-		name: 'UI/UX Design',
-		items: [
-			{
-				title: 'Introduction',
-				url: '/uiux/introduction',
-				icon: Frame,
-			},
-			{
-				title: 'Frontend',
-				url: '/uiux/frontend',
-				icon: Code2,
-			},
-			{
-				title: 'Quiz',
-				url: '/uiux/quiz',
-				icon: FileQuestion,
 			},
 		],
 	},
@@ -105,7 +120,7 @@ const navItems = [
 		],
 	},
 	{
-		name: 'Full-stack',
+		name: 'Full-Stack',
 		items: [
 			{
 				title: 'React.js',
@@ -126,6 +141,46 @@ const navItems = [
 				title: 'Components',
 				url: '/fullstack/components',
 				icon: Box,
+			},
+			{
+				title: 'Props',
+				url: '/fullstack/props',
+				icon: Forward,
+			},
+			{
+				title: 'Props Quiz',
+				url: '/fullstack/quiz-props',
+				icon: FileQuestion,
+			},
+			{
+				title: 'Hooks',
+				url: '/fullstack/hooks',
+				icon: Wand,
+			},
+			{
+				title: 'Hooks Quiz',
+				url: '/fullstack/quiz-hooks',
+				icon: FileQuestion,
+			},
+			{
+				title: 'API',
+				url: '/fullstack/api',
+				icon: Waypoints,
+			},
+			{
+				title: 'API Quiz',
+				url: '/fullstack/quiz-api',
+				icon: FileQuestion,
+			},
+			{
+				title: 'TVMaze',
+				url: '/fullstack/projects',
+				icon: Workflow,
+			},
+			{
+				title: 'Deploy',
+				url: '/fullstack/deploy',
+				icon: Rocket,
 			},
 		],
 	},

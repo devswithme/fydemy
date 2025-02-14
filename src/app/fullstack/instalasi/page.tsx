@@ -1,9 +1,9 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
 export const metadata: Metadata = {
-	title: 'Frontend Introduction',
+	title: 'Fullstack Instalasi',
 	description:
-		'Belajar frontend adalah hal yang menyenangkan dan menjadi fondasi untuk pembelajaran kita kedepannya',
+		'React.js dapat diinstal menggunakan berbagai cara. Dua metode yang paling umum adalah:',
 }
 
 export default function ApiReference() {

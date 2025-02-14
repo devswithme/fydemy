@@ -1,9 +1,9 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
 export const metadata: Metadata = {
-	title: 'Frontend Introduction',
+	title: 'Fullstack Hello World',
 	description:
-		'Belajar frontend adalah hal yang menyenangkan dan menjadi fondasi untuk pembelajaran kita kedepannya',
+		'Pasti kalian binging struktur template react ini kann! sini aku jelasinn Folder utama tempat kita menulis kode aplikasi react ini di:',
 }
 
 export default function ApiReference() {

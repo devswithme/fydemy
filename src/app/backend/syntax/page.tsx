@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-	title: 'Frontend Projects',
+	title: 'Backend Syntax',
 	description:
-		'Untuk projekan kali ini, kalian diharapkan sudah mengerti dulu konsep dasarnya',
+		'Hah? NPM itu apa? pas kalian install node.js, NPM (Node Package Manager) ini juga terinstall sebagai package managernya.',
 }
 
 export default function Home() {

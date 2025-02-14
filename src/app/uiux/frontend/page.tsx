@@ -1,9 +1,8 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-	title: 'Frontend Introduction',
-	description:
-		'Belajar frontend adalah hal yang menyenangkan dan menjadi fondasi untuk pembelajaran kita kedepannya',
+	title: 'UI/UX Frontend',
+	description: 'Mari Mengenal Frontend Developer',
 }
 
 export default function ApiReference() {

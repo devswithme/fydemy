@@ -1,9 +1,9 @@
 import { Metadata } from 'next'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
-	title: 'Frontend Introduction',
-	description:
-		'Belajar frontend adalah hal yang menyenangkan dan menjadi fondasi untuk pembelajaran kita kedepannya',
+	title: 'UI/UX Introduction',
+	description: 'Jadi, Apa itu UI & UX Design?',
 }
 
 export default function ApiReference() {
@@ -17,6 +17,13 @@ export default function ApiReference() {
 				& website). Proses ini dilakukan sejak tahap riset, eksekusi
 				desain hingga pengujian.
 			</p>
+			<Image
+				src='/uiux/6.png'
+				alt='6.png'
+				width={1600}
+				height={900}
+				className='w-full sm:w-1/2 object-cover object-top rounded'
+			/>
 			<h2>Lalu, Apa itu UX?</h2>
 			<p>
 				User Experience adalah bagaimana perasaan dan pengalaman

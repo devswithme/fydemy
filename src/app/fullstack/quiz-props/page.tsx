@@ -6,7 +6,6 @@ import {
 	RadioGroupItem,
 } from '@/components/ui/radio-group'
 // import { Metadata } from 'next'
-import Image from 'next/image'
 import { useState } from 'react'
 import { toast } from 'sonner'
 
@@ -36,10 +35,10 @@ export default function ApiReference() {
 		console.log(form)
 		if (
 			form.one == 'b' &&
-			form.two == 'a' &&
-			form.three == 'b' &&
-			form.four == 'a' &&
-			form.five == 'c'
+			form.two == 'b' &&
+			form.three == 'a' &&
+			form.four == 'c' &&
+			form.five == 'b'
 		) {
 			setForm({
 				one: '',
@@ -64,10 +63,8 @@ export default function ApiReference() {
 
 	return (
 		<main className='max-w-3xl mx-auto prose'>
-			<h1>Quiz</h1>
-			<p className='mb-0'>
-				1. Manakah yang merupakan tanggung jawab seorang UI?
-			</p>
+			<h1>Kuis Props di React 📦✨</h1>
+			<p className='mb-0'>1. Apa itu props di React?</p>
 			<RadioGroup
 				className='-space-y-10'
 				value={form.one}
@@ -79,7 +76,7 @@ export default function ApiReference() {
 						value='a'
 						id='one-a'
 					/>
-					<p>Membuat user persona dan user flow dalam produk</p>
+					<p>Sebuah fungsi yang mengubah state</p>
 				</label>
 				<label className='flex items-center space-x-3'>
 					<RadioGroupItem
@@ -87,8 +84,8 @@ export default function ApiReference() {
 						id='one-b'
 					/>
 					<p>
-						Mengatur dan membuat desain visual/tampilan produk
-						semenarik mungkin
+						Paket data yang dikirim dari komponen induk ke komponen
+						anak
 					</p>
 				</label>
 				<label className='flex items-center space-x-3'>
@@ -96,20 +93,13 @@ export default function ApiReference() {
 						value='c'
 						id='one-c'
 					/>
-					<p>Mengubah produk sesuai harga pasar</p>
+					<p>Sebuah variabel global yang bisa diubah sesuka hati</p>
 				</label>
 			</RadioGroup>
 
 			<p className='mb-0'>
-				2. Berikut ini merupakan proses dari UI/UX, Yaitu?
+				2. Bagaimana cara mengirim props ke komponen anak?
 			</p>
-			<Image
-				src='/uiux/1.png'
-				alt='1.png'
-				width={1600}
-				height={900}
-				className='w-full sm:w-1/2 object-cover object-top rounded'
-			/>
 			<RadioGroup
 				className='-space-y-10'
 				value={form.two}
@@ -119,29 +109,44 @@ export default function ApiReference() {
 						value='a'
 						id='two-a'
 					/>
-					<p>User Persona</p>
+					<p>
+						Dengan menggunakan <code>setProps()</code>
+					</p>
 				</label>
 				<label className='flex items-center space-x-3'>
 					<RadioGroupItem
 						value='b'
 						id='two-b'
 					/>
-					<p>User Journey MAP</p>
+					<p>
+						Dengan memberikan atribut saat memanggil komponen anak
+					</p>
 				</label>
 				<label className='flex items-center space-x-3'>
 					<RadioGroupItem
 						value='c'
 						id='two-c'
 					/>
-					<p>Storyboarding</p>
+					<p>
+						Dengan menulis <code>{`props.nama = "Budi"`}</code>{' '}
+						langsung di dalam komponen anak
+					</p>
 				</label>
 			</RadioGroup>
 
 			<p className='mb-0'>
-				3. Siapa yang bertugas merancang proses interaksi dan
-				pengalaman bagi pengguna pada sebuah produk (aplikasi &
-				website)?
+				3. Apa yang akan ditampilkan oleh kode ini?
 			</p>
+			<pre>
+				<code>{`funtion Halo(props){
+    return <h1>Halo, {props.nama}! 👋</h1>;
+}
+
+function App(){
+    return <Halo nama="Dino" />;
+}
+`}</code>
+			</pre>
 			<RadioGroup
 				className='-space-y-10'
 				value={form.three}
@@ -151,28 +156,33 @@ export default function ApiReference() {
 						value='a'
 						id='three-a'
 					/>
-					<p>User Interface</p>
+					<p>Halo, Dino! 👋</p>
 				</label>
 				<label className='flex items-center space-x-3'>
 					<RadioGroupItem
 						value='b'
 						id='three-b'
 					/>
-					<p>User Experience</p>
+					<p>Halo, props.nama! 👋</p>
 				</label>
 				<label className='flex items-center space-x-3'>
 					<RadioGroupItem
 						value='c'
 						id='three-c'
 					/>
-					<p>UI/UX</p>
+					<p>
+						Error karena <code>props</code> belum dideklarasikan
+					</p>
 				</label>
 			</RadioGroup>
 
-			<p className='mb-0'>
-				4. Siapa yang bertugas membangun rancangan Interface
-				aplikasi/web untuk bisa digunakan oleh user?
-			</p>
+			<p className='mb-0'>4. Props bisa berupa apa saja?</p>
+			<pre>
+				<code>{`function add(a, b) {
+	return a + b
+}
+console.log(add(3, 4, 5))`}</code>
+			</pre>
 			<RadioGroup
 				className='-space-y-10'
 				value={form.four}
@@ -182,27 +192,26 @@ export default function ApiReference() {
 						value='a'
 						id='four-a'
 					/>
-					<p>Frontend Developer</p>
+					<p>Hanya teks dan angka</p>
 				</label>
 				<label className='flex items-center space-x-3'>
 					<RadioGroupItem
 						value='b'
 						id='four-b'
 					/>
-					<p>Backend Developer</p>
+					<p>Hanya objek dan array</p>
 				</label>
 				<label className='flex items-center space-x-3'>
 					<RadioGroupItem
 						value='c'
 						id='four-c'
 					/>
-					<p>UX Engineer</p>
+					<p>Teks, angka, objek, fungsi, bahkan komponen lain!</p>
 				</label>
 			</RadioGroup>
 
 			<p className='mb-0'>
-				5. Untuk mengatur struktur halaman web berupa text menggunakan
-				dan gambar?
+				5. Kenapa props tidak boleh diubah oleh komponen anak?
 			</p>
 			<RadioGroup
 				className='-space-y-10'
@@ -213,21 +222,26 @@ export default function ApiReference() {
 						value='a'
 						id='five-a'
 					/>
-					<p>CSS</p>
+					<p>Karena React malas memperbarui UI</p>
 				</label>
 				<label className='flex items-center space-x-3'>
 					<RadioGroupItem
 						value='b'
 						id='five-b'
 					/>
-					<p>Figma</p>
+					<p>
+						Karena props adalah satu arah (one-way binding) dari induk
+						ke anak
+					</p>
 				</label>
 				<label className='flex items-center space-x-3'>
 					<RadioGroupItem
 						value='c'
 						id='five-c'
 					/>
-					<p>HTML</p>
+					<p>
+						Karena komponen anak tidak boleh punya variabel sendiri
+					</p>
 				</label>
 			</RadioGroup>
 

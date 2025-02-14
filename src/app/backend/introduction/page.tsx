@@ -3,9 +3,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-	title: 'Frontend Projects',
+	title: 'Backend Introduction',
 	description:
-		'Untuk projekan kali ini, kalian diharapkan sudah mengerti dulu konsep dasarnya',
+		'Setelah kalian belajar basic frontend dengan HTML CSS dan JS. Pernah penasaran kah sama cara kerja website Tokopedia,',
 }
 
 export default function Home() {
