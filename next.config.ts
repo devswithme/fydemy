@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
 	},
 	assetPrefix: '',
 	env: {
-		NEXT_PUBLIC_PWD: '123',
+		NEXT_PUBLIC_PWD: 'fysite-ac-id',
 	},
 }
 
