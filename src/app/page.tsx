@@ -49,7 +49,7 @@ Full-Stack
 			</pre>
 			<p>
 				Yuk kita mulai!{' '}
-				<Link href='/frontend/warm-up'>{`Let's start your journey`}</Link>
+				<Link href='/uiux/warm-up'>{`Let's start your journey`}</Link>
 			</p>
 		</main>
 	)
