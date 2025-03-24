@@ -22,7 +22,7 @@ export default function Home() {
 				ini di terminal:
 			</p>
 			<pre>
-				<code>{`npm create vite@latest my-tv-app --template react
+				<code className='language-js'>{`npm create vite@latest my-tv-app --template react
 cd my-tv-app
 npm install
 `}</code>
@@ -32,7 +32,7 @@ npm install
 				project kita buat ngecek apakah semuanya berjalan lancar:
 			</p>
 			<pre>
-				<code>{`npm run dev`}</code>
+				<code className='language-js'>{`npm run dev`}</code>
 			</pre>
 			<p>
 				Wuaa! Sekarang kita udah punya project React yang nyala di
@@ -45,7 +45,7 @@ npm install
 				bisa pake Axios, kita harus pasang dulu di project kita:
 			</p>
 			<pre>
-				<code>{`npm install axios`}</code>
+				<code className='language-js'>{`npm install axios`}</code>
 			</pre>
 			<p>
 				Nah, setelah terpasang, kita siap buat panggil data dari API
@@ -55,11 +55,12 @@ npm install
 			<p>
 				Sekarang kita masuk ke bagian seru nih! Kita bakal bikin fitur
 				pencarian acara TV. Yuk, kita buat file baru di folder{' '}
-				<code>src</code>, namanya <code>SearchShow.jsx</code>, dan
-				ketik kode ini:
+				<code className='language-js'>src</code>, namanya{' '}
+				<code className='language-js'>SearchShow.jsx</code>, dan ketik
+				kode ini:
 			</p>
 			<pre>
-				<code>{`import { useState } from "react";
+				<code className='language-js'>{`import { useState } from "react";
 import axios from "axios";
 
 const SearchShow = () => {
@@ -103,22 +104,25 @@ export default SearchShow;`}</code>
 			</pre>
 			<p>
 				Di sini, kita bikin state buat menyimpan input pencarian (
-				<code>query</code>) dan daftar acara TV (<code>shows</code>).
-				Kalau tombol submit ditekan, kita bakal manggil API TVMaze dan
-				munculin gambar acara TV yang dicari! 🎬📡
+				<code className='language-js'>query</code>) dan daftar acara
+				TV (<code className='language-js'>shows</code>). Kalau tombol
+				submit ditekan, kita bakal manggil API TVMaze dan munculin
+				gambar acara TV yang dicari! 🎬📡
 			</p>
 			<h2>
-				4. Integrasikan <code>SearchShow</code> ke{' '}
-				<code>App.jsx</code>
+				4. Integrasikan{' '}
+				<code className='language-js'>SearchShow</code> ke{' '}
+				<code className='language-js'>App.jsx</code>
 			</h2>
 			<p>
 				Setelah bikin komponen pencarian, kita pasang di{' '}
-				<code>App.jsx</code>
-				supaya bisa dipakai. Buka <code>src/App.jsx</code>, lalu edit
+				<code className='language-js'>App.jsx</code>
+				supaya bisa dipakai. Buka{' '}
+				<code className='language-js'>src/App.jsx</code>, lalu edit
 				kodenya jadi seperti ini:
 			</p>
 			<pre>
-				<code>{`import SearchShow from "./SearchShow";
+				<code className='language-js'>{`import SearchShow from "./SearchShow";
 
 function App() {
   return (
@@ -143,7 +147,7 @@ export default App;
 				terminal, lalu ketik:
 			</p>
 			<pre>
-				<code>{`npm run dev`}</code>
+				<code className='language-js'>{`npm run dev`}</code>
 			</pre>
 			<p>
 				Sekarang buka browser dan pergi ke alamat yang dikasih di

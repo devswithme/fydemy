@@ -44,14 +44,15 @@ export default function Home() {
 			<ul>
 				<li>Bisa menggunakan properti float atau flex pada CSS</li>
 				<li>
-					Import gambarnya dengan <code>{`<img src="..."/>`}</code> ,
+					Import gambarnya dengan{' '}
+					<code className='language-js'>{`<img src="..."/>`}</code> ,
 					bisa import dari file lokal anda (dalam folder yang sama)
 					atau dari url internet
 				</li>
 				<li>
 					Menggunakan elemen list dalam HTML seperti contoh ini:
 					<pre>
-						<code>{`<ul>
+						<code className='language-js'>{`<ul>
 	<li>List 1</li>
 	<li>List 2</li>
 </ul>
@@ -82,7 +83,7 @@ export default function Home() {
 					Pastikan layoutnya sama persis posisinya dengan contoh. Bisa
 					dilakukan dengan konsep <b>flex box</b> dalam CSS.
 					<pre>
-						<code>{`<div style="display:flex">
+						<code className='language-js'>{`<div style="display:flex">
 	<img src="..."/>
 	<img src="..."/>
 </div>`}</code>
@@ -91,7 +92,7 @@ export default function Home() {
 				<li>
 					Menggunakan object window untuk implementasi tombol ke
 					halama lain{' '}
-					<code>
+					<code className='language-js'>
 						window.location.href = https://instagram.com/@username
 					</code>{' '}
 					dalam function penambahan eventnya

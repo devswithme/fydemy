@@ -23,9 +23,11 @@ export default function Home() {
 				</li>
 				<li>
 					<b>#2</b>, Di setiap routenya tambahkan{' '}
-					<code>try catch</code> untuk menghandle bila program terjadi
-					error. Bisa dengan <code>{`res.json({message: err})`}</code>{' '}
-					atau hanya <code>{`console.log(err)`}</code>.
+					<code className='language-js'>try catch</code> untuk
+					menghandle bila program terjadi error. Bisa dengan{' '}
+					<code className='language-js'>{`res.json({message: err})`}</code>{' '}
+					atau hanya{' '}
+					<code className='language-js'>{`console.log(err)`}</code>.
 				</li>
 			</ul>
 			<Image

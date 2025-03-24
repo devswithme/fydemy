@@ -150,7 +150,7 @@ export default function ApiReference() {
 				kali dirender?
 			</p>
 			<pre>
-				<code>{`funtion Contoh(){
+				<code className='language-js'>{`funtion Contoh(){
     const [angka, setAngka] = useState(10);
     return <h2>Nilai: {angka}</h2>;
 }
@@ -203,7 +203,7 @@ export default function ApiReference() {
 						id='four-a'
 					/>
 					<p>
-						<code>{`angka = 5;`}</code>
+						<code className='language-js'>{`angka = 5;`}</code>
 					</p>
 				</label>
 				<label className='flex items-center space-x-3'>
@@ -212,7 +212,7 @@ export default function ApiReference() {
 						id='four-b'
 					/>
 					<p>
-						<code>{`useState(5);`}</code>
+						<code className='language-js'>{`useState(5);`}</code>
 					</p>
 				</label>
 				<label className='flex items-center space-x-3'>
@@ -221,7 +221,7 @@ export default function ApiReference() {
 						id='four-c'
 					/>
 					<p>
-						<code>{`setAngka(5);`}</code>
+						<code className='language-js'>{`setAngka(5);`}</code>
 					</p>
 				</label>
 				<label className='flex items-center space-x-3'>
@@ -230,7 +230,7 @@ export default function ApiReference() {
 						id='four-d'
 					/>
 					<p>
-						<code>{`changeState(5);`}</code>
+						<code className='language-js'>{`changeState(5);`}</code>
 					</p>
 				</label>
 			</RadioGroup>
@@ -276,7 +276,8 @@ export default function ApiReference() {
 
 			<p className='mb-0'>
 				6. Kapan useEffect dengan dependensi kosong (
-				<code>{`useEffect(() => {}, [])`}</code>) akan dijalankan?
+				<code className='language-js'>{`useEffect(() => {}, [])`}</code>
+				) akan dijalankan?
 			</p>
 			<RadioGroup
 				className='-space-y-10'
@@ -316,7 +317,7 @@ export default function ApiReference() {
 				7. Apa output dari kode berikut setelah tombol ditekan sekali?
 			</p>
 			<pre>
-				<code>{`function Contoh(){
+				<code className='language-js'>{`function Contoh(){
     const [hitung, setHitung] = useState(0);
 
     useEffect(() => {
@@ -368,7 +369,8 @@ export default function ApiReference() {
 			<p className='mb-0'>
 				8. Apa yang terjadi jika kita tidak memberikan array
 				dependensi pada useEffect (
-				<code>{`useEffect(() => {...})`}</code>)?
+				<code className='language-js'>{`useEffect(() => {...})`}</code>
+				)?
 			</p>
 			<RadioGroup
 				className='-space-y-10'
