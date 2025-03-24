@@ -32,7 +32,7 @@ export default function Page() {
 			</p>
 			<h2>Daftar Isi</h2>
 			<pre>
-				<code>{`UI/UX Design
+				<code className='language-js'>{`UI/UX Design
 ├── Warm up & Introduction
 ├── Frontend Concept
 └── Quiz & Projects: Translate design into front-end code
