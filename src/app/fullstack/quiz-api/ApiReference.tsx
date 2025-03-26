@@ -5,6 +5,7 @@ import {
 	RadioGroup,
 	RadioGroupItem,
 } from '@/components/ui/radio-group'
+import { X } from 'lucide-react'
 // import { Metadata } from 'next'
 import { useState } from 'react'
 import { toast } from 'sonner'
@@ -36,20 +37,49 @@ export default function ApiReference() {
 		}))
 	}
 
+	const [mark, setMark] = useState<{ [key: string]: boolean }>({})
+
+	const correctAnswers = {
+		one: 'b',
+		two: 'b',
+		three: 'a',
+		four: 'b',
+		five: 'b',
+		six: 'b',
+		seven: 'b',
+		eight: 'b',
+		nine: 'a',
+		ten: 'a',
+	}
+
 	const onSubmit = () => {
-		console.log(form)
-		if (
-			form.one == 'b' &&
-			form.two == 'b' &&
-			form.three == 'a' &&
-			form.four == 'b' &&
-			form.five == 'b' &&
-			form.six == 'b' &&
-			form.seven == 'b' &&
-			form.eight == 'b' &&
-			form.nine == 'a' &&
-			form.ten == 'a'
-		) {
+		// Check if all questions are answered
+		const allAnswered = Object.values(form).every(
+			(value) => value !== ''
+		)
+
+		if (!allAnswered) {
+			toast('Jawaban belum lengkap, pastikan terisi semuanya.')
+			return
+		}
+
+		// Mark incorrect answers only after all are filled
+		const newMark = Object.keys(form).reduce((acc, key) => {
+			if (
+				form[key as keyof typeof form] !==
+				correctAnswers[key as keyof typeof correctAnswers]
+			) {
+				acc[key] = true // Mark only wrong answers
+			}
+			return acc
+		}, {} as { [key: string]: boolean })
+
+		setMark(newMark)
+
+		if (Object.keys(newMark).length > 0) {
+			toast('Maaf jawaban salah, silahkan coba lagi!')
+		} else {
+			toast('Congratulation! Semua jawaban anda benar.')
 			setForm({
 				one: '',
 				two: '',
@@ -62,25 +92,20 @@ export default function ApiReference() {
 				nine: '',
 				ten: '',
 			})
-			toast('Congratulation! Semua jawaban anda benar.')
-		} else if (
-			form.one == '' ||
-			form.two == '' ||
-			form.three == '' ||
-			form.four == '' ||
-			form.five == ''
-		) {
-			toast('Jawban belum lengkap, pastikan terisi semuanya.')
-		} else {
-			toast('Maaf jawaban salah, silahkan coba lagi!')
+			setMark({})
 		}
 	}
 
 	return (
 		<main className='max-w-3xl mx-auto prose'>
 			<h1>Kuis API di React 📦✨</h1>
-			<p className='mb-0'>
-				1. Apa fungsi utama dari Axios dalam React?
+			<p
+				className={`mb-0 ${
+					mark.one &&
+					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
+				}`}>
+				1. Apa fungsi utama dari Axios dalam React?{' '}
+				{mark.one && <X />}
 			</p>
 			<RadioGroup
 				className='-space-y-10'
@@ -111,10 +136,17 @@ export default function ApiReference() {
 				</label>
 			</RadioGroup>
 
-			<p className='mb-0'>
-				2. Apa perbedaan utama antara{' '}
-				<code className='language-js'>fetch()</code> dan{' '}
-				<code className='language-js'>axios</code>?
+			<p
+				className={`mb-0 ${
+					mark.two &&
+					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
+				}`}>
+				<div>
+					2. Apa perbedaan utama antara{' '}
+					<code className='language-js'>fetch()</code> dan{' '}
+					<code className='language-js'>axios</code>?
+				</div>
+				{mark.two && <X />}
 			</p>
 			<RadioGroup
 				className='-space-y-10'
@@ -149,10 +181,17 @@ export default function ApiReference() {
 				</label>
 			</RadioGroup>
 
-			<p className='mb-0'>
-				3. Apa fungsi dari{' '}
-				<code className='language-js'>useEffect</code> dalam
-				pengambilan data API?
+			<p
+				className={`mb-0 ${
+					mark.three &&
+					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
+				}`}>
+				<div>
+					3. Apa fungsi dari{' '}
+					<code className='language-js'>useEffect</code> dalam
+					pengambilan data API?
+				</div>
+				{mark.three && <X />}
 			</p>
 			<RadioGroup
 				className='-space-y-10'
@@ -181,10 +220,17 @@ export default function ApiReference() {
 				</label>
 			</RadioGroup>
 
-			<p className='mb-0'>
-				4. Kapan sebaiknya kita menggunakan{' '}
-				<code className='language-js'>useEffect</code> dengan array
-				dependency kosong <code className='language-js'>[]</code>?
+			<p
+				className={`mb-0 ${
+					mark.four &&
+					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
+				}`}>
+				<div>
+					4. Kapan sebaiknya kita menggunakan{' '}
+					<code className='language-js'>useEffect</code> dengan array
+					dependency kosong <code className='language-js'>[]</code>?
+				</div>
+				{mark.four && <X />}
 			</p>
 			<RadioGroup
 				className='-space-y-10'
@@ -213,9 +259,13 @@ export default function ApiReference() {
 				</label>
 			</RadioGroup>
 
-			<p className='mb-0'>
+			<p
+				className={`mb-0 ${
+					mark.five &&
+					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
+				}`}>
 				5. Apa yang terjadi jika kita tidak menangani error dalam
-				Axios?
+				Axios? {mark.five && <X />}
 			</p>
 			<RadioGroup
 				className='-space-y-10'
@@ -247,7 +297,13 @@ export default function ApiReference() {
 				</label>
 			</RadioGroup>
 
-			<p className='mb-0'>6. Apa yang dilakukan kode berikut?</p>
+			<p
+				className={`mb-0 ${
+					mark.six &&
+					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
+				}`}>
+				6. Apa yang dilakukan kode berikut? {mark.six && <X />}
+			</p>
 			<pre>
 				<code className='language-js'>{`axios.get("https://jsonplaceholder.typicode.com/posts")
     .then(response => console.log(response.data))
@@ -280,8 +336,13 @@ export default function ApiReference() {
 				</label>
 			</RadioGroup>
 
-			<p className='mb-0'>
-				7. Dalam kode berikut, di mana data API disimpan?
+			<p
+				className={`mb-0 ${
+					mark.seven &&
+					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
+				}`}>
+				7. Dalam kode berikut, di mana data API disimpan?{' '}
+				{mark.seven && <X />}
 			</p>
 			<pre>
 				<code className='language-js'>{`const [posts, setPosts] = useState([]);`}</code>
@@ -315,8 +376,13 @@ export default function ApiReference() {
 				</label>
 			</RadioGroup>
 
-			<p className='mb-0'>
-				8. Apa yang ditampilkan jika API gagal dipanggil?
+			<p
+				className={`mb-0 ${
+					mark.eight &&
+					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
+				}`}>
+				8. Apa yang ditampilkan jika API gagal dipanggil?{' '}
+				{mark.eight && <X />}
 			</p>
 			<RadioGroup
 				className='-space-y-10'
@@ -348,8 +414,13 @@ export default function ApiReference() {
 				</label>
 			</RadioGroup>
 
-			<p className='mb-0'>
-				9. Bagaimana cara menampilkan hanya 5 data pertama dari API?
+			<p
+				className={`mb-0 ${
+					mark.nine &&
+					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
+				}`}>
+				9. Bagaimana cara menampilkan hanya 5 data pertama dari API?{' '}
+				{mark.nine && <X />}
 			</p>
 			<RadioGroup
 				className='-space-y-10'
@@ -382,10 +453,17 @@ export default function ApiReference() {
 				</label>
 			</RadioGroup>
 
-			<p className='mb-0'>
-				10. Apa yang terjadi jika kita lupa menambahkan{' '}
-				<code className='language-js'>[]</code> di{' '}
-				<code className='language-js'>useEffect</code>?
+			<p
+				className={`mb-0 ${
+					mark.ten &&
+					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
+				}`}>
+				<div>
+					10. Apa yang terjadi jika kita lupa menambahkan{' '}
+					<code className='language-js'>[]</code> di{' '}
+					<code className='language-js'>useEffect</code>?
+				</div>
+				{mark.ten && <X />}
 			</p>
 			<RadioGroup
 				className='-space-y-10'

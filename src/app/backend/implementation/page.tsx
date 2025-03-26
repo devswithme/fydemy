@@ -1,6 +1,5 @@
-import { Button } from '@/components/ui/button'
 import { navItems } from '@/constants'
-import { ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -407,14 +406,18 @@ app.post('/books', async (req, res) => {
 				melihat detail buku berdasarkan id!
 			</p>
 
-			<div className='flex justify-end items-center'>
-				<Button>
-					<Link
-						href={navItems[2].items[3].url}
-						className='no-underline flex items-center gap-2 text-white'>
-						{navItems[2].items[3].title} <ChevronRight />
+			<div className='bg-white w-full border-t fixed right-0 md:pl-64 bottom-0 py-5'>
+				<div className='flex justify-between items-center max-w-3xl mx-auto px-5 lg:px-0'>
+					<Link href={navItems[2].items[1].url}>
+						<ChevronLeft />
 					</Link>
-				</Button>
+					<span className='font-semibold'>
+						{navItems[2].items[2].title}
+					</span>
+					<Link href={navItems[2].items[3].url}>
+						<ChevronRight />
+					</Link>
+				</div>
 			</div>
 		</main>
 	)

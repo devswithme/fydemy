@@ -1,6 +1,5 @@
-import { Button } from '@/components/ui/button'
 import { navItems } from '@/constants'
-import { ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Metadata } from 'next'
 import Link from 'next/link'
 export const metadata: Metadata = {
@@ -258,14 +257,20 @@ function Halaman(){
 				lebih seruuu! 🥳
 			</p>
 
-			<div className='flex justify-end items-center'>
-				<Button>
+			<div className='bg-white w-full border-t fixed right-0 md:pl-64 bottom-0 py-5'>
+				<div className='flex justify-between items-center max-w-3xl mx-auto px-5 lg:px-0'>
 					<Link
 						href={navItems[3].items[7].url}
-						className='no-underline flex items-center gap-2 text-white'>
-						{navItems[3].items[7].title} <ChevronRight />
+						className='invisible'>
+						<ChevronLeft />
 					</Link>
-				</Button>
+					<span className='font-semibold'>
+						{navItems[3].items[6].title}
+					</span>
+					<Link href={navItems[3].items[7].url}>
+						<ChevronRight />
+					</Link>
+				</div>
 			</div>
 		</main>
 	)

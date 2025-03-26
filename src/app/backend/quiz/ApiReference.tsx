@@ -5,6 +5,7 @@ import {
 	RadioGroup,
 	RadioGroupItem,
 } from '@/components/ui/radio-group'
+import { X } from 'lucide-react'
 // import { Metadata } from 'next';
 import { useState } from 'react'
 import { toast } from 'sonner'
@@ -23,6 +24,16 @@ export default function ApiReference() {
 		five: '',
 	})
 
+	const [mark, setMark] = useState<{ [key: string]: boolean }>({})
+
+	const correctAnswers = {
+		one: 'a',
+		two: 'a',
+		three: 'c',
+		four: 'b',
+		five: 'b',
+	}
+
 	const handleChange = (key: string, value: string) => {
 		setForm((prev) => ({
 			...prev,
@@ -31,14 +42,33 @@ export default function ApiReference() {
 	}
 
 	const onSubmit = () => {
-		console.log(form)
-		if (
-			form.one == 'a' &&
-			form.two == 'a' &&
-			form.three == 'c' &&
-			form.four == 'b' &&
-			form.five == 'b'
-		) {
+		// Check if all questions are answered
+		const allAnswered = Object.values(form).every(
+			(value) => value !== ''
+		)
+
+		if (!allAnswered) {
+			toast('Jawaban belum lengkap, pastikan terisi semuanya.')
+			return
+		}
+
+		// Mark incorrect answers only after all are filled
+		const newMark = Object.keys(form).reduce((acc, key) => {
+			if (
+				form[key as keyof typeof form] !==
+				correctAnswers[key as keyof typeof correctAnswers]
+			) {
+				acc[key] = true // Mark only wrong answers
+			}
+			return acc
+		}, {} as { [key: string]: boolean })
+
+		setMark(newMark)
+
+		if (Object.keys(newMark).length > 0) {
+			toast('Maaf jawaban salah, silahkan coba lagi!')
+		} else {
+			toast('Congratulation! Semua jawaban anda benar.')
 			setForm({
 				one: '',
 				two: '',
@@ -46,17 +76,7 @@ export default function ApiReference() {
 				four: '',
 				five: '',
 			})
-			toast('Congratulation! Semua jawaban anda benar.')
-		} else if (
-			form.one == '' ||
-			form.two == '' ||
-			form.three == '' ||
-			form.four == '' ||
-			form.five == ''
-		) {
-			toast('Jawban belum lengkap, pastikan terisi semuanya.')
-		} else {
-			toast('Maaf jawaban salah, silahkan coba lagi!')
+			setMark({})
 		}
 	}
 
@@ -64,9 +84,13 @@ export default function ApiReference() {
 		<>
 			<main className='max-w-3xl mx-auto prose'>
 				<h1>Quiz</h1>
-				<p className='mb-0'>
+				<p
+					className={`mb-0 ${
+						mark.one &&
+						'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
+					}`}>
 					1. Apa method API yang cocok untuk return atau retrieve satu
-					atau lebihdata?
+					atau lebih data? {mark.one && <X />}
 				</p>
 				<RadioGroup
 					className='-space-y-10'
@@ -97,10 +121,17 @@ export default function ApiReference() {
 					</label>
 				</RadioGroup>
 
-				<p className='mb-0'>
-					2. Apa kegunaan memakai library{' '}
-					<code className='language-js'>Prisma</code> dibanding yang
-					lain?
+				<p
+					className={`mb-0 ${
+						mark.two &&
+						'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
+					}`}>
+					<div>
+						2. Apa kegunaan memakai library{' '}
+						<code className='language-js'>Prisma</code> dibanding yang
+						lain?{' '}
+					</div>
+					{mark.two && <X />}
 				</p>
 				<RadioGroup
 					className='-space-y-10'
@@ -139,9 +170,16 @@ export default function ApiReference() {
 					</label>
 				</RadioGroup>
 
-				<p className='mb-0'>
-					3. <code className='language-js'>req.body</code> mendapat
-					nilai <b>nama</b> dan <b>peminjam</b> dari mana?
+				<p
+					className={`mb-0 ${
+						mark.three &&
+						'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
+					}`}>
+					<div>
+						3. <code className='language-js'>req.body</code> mendapat
+						nilai <b>nama</b> dan <b>peminjam</b> dari mana?
+					</div>
+					{mark.three && <X />}
 				</p>
 				<pre>
 					<code className='language-js'>{`app.post('/books', async (req, res) => {
@@ -184,11 +222,18 @@ export default function ApiReference() {
 					</label>
 				</RadioGroup>
 
-				<p className='mb-0'>
-					4. Kenapa penulis menyarankan untuk menggunakan libary{' '}
-					<code className='language-js'>nodemon</code> dari pada{' '}
-					<code className='language-js'>node [nama file]</code> dalam
-					fase development?
+				<p
+					className={`mb-0 ${
+						mark.four &&
+						'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
+					}`}>
+					<div className='flex-1'>
+						4. Kenapa penulis menyarankan untuk menggunakan libary{' '}
+						<code className='language-js'>nodemon</code> dari pada{' '}
+						<code className='language-js'>node [nama file]</code>{' '}
+						dalam fase development?
+					</div>
+					{mark.four && <X />}
 				</p>
 				<RadioGroup
 					className='-space-y-10'
@@ -228,9 +273,16 @@ export default function ApiReference() {
 					</label>
 				</RadioGroup>
 
-				<p className='mb-0'>
-					5. Kenapa kita harus menyimpan nilai variabel penting ke
-					dalam file <code className='language-js'>.env</code>?
+				<p
+					className={`mb-0 ${
+						mark.five &&
+						'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
+					}`}>
+					<div>
+						5. Kenapa kita harus menyimpan nilai variabel penting ke
+						dalam file <code className='language-js'>.env</code>?
+					</div>
+					{mark.five && <X />}
 				</p>
 				<RadioGroup
 					className='-space-y-10'

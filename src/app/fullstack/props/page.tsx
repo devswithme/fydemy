@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button'
 import { navItems } from '@/constants'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Metadata } from 'next'
@@ -97,21 +96,18 @@ function Mama(){
 				seruuu! 🎈🥳
 			</p>
 
-			<div className='flex justify-between items-center'>
-				<Button>
-					<Link
-						href={navItems[3].items[3].url}
-						className='no-underline flex items-center gap-2 text-white'>
-						<ChevronLeft /> {navItems[3].items[3].title}
+			<div className='bg-white w-full border-t fixed right-0 md:pl-64 bottom-0 py-5'>
+				<div className='flex justify-between items-center max-w-3xl mx-auto px-5 lg:px-0'>
+					<Link href={navItems[3].items[3].url}>
+						<ChevronLeft />
 					</Link>
-				</Button>
-				<Button>
-					<Link
-						href={navItems[3].items[5].url}
-						className='no-underline flex items-center gap-2 text-white'>
-						{navItems[3].items[5].title} <ChevronRight />
+					<span className='font-semibold'>
+						{navItems[3].items[4].title}
+					</span>
+					<Link href={navItems[3].items[5].url}>
+						<ChevronRight />
 					</Link>
-				</Button>
+				</div>
 			</div>
 		</main>
 	)
