@@ -325,7 +325,7 @@ export default function ApiReference() {
 					mark.six &&
 					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
 				}`}>
-				<div>
+				<div className='flex-1'>
 					6. Kapan useEffect dengan dependensi kosong (
 					<code className='language-js'>{`useEffect(() => {}, [])`}</code>
 					) akan dijalankan?
@@ -429,7 +429,7 @@ export default function ApiReference() {
 					mark.eight &&
 					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
 				}`}>
-				<div>
+				<div className='flex-1'>
 					8. Apa yang terjadi jika kita tidak memberikan array
 					dependensi pada useEffect (
 					<code className='language-js'>{`useEffect(() => {...})`}</code>

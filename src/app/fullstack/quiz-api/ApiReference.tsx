@@ -141,7 +141,7 @@ export default function ApiReference() {
 					mark.two &&
 					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
 				}`}>
-				<div>
+				<div className='flex-1'>
 					2. Apa perbedaan utama antara{' '}
 					<code className='language-js'>fetch()</code> dan{' '}
 					<code className='language-js'>axios</code>?
@@ -186,7 +186,7 @@ export default function ApiReference() {
 					mark.three &&
 					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
 				}`}>
-				<div>
+				<div className='flex-1'>
 					3. Apa fungsi dari{' '}
 					<code className='language-js'>useEffect</code> dalam
 					pengambilan data API?
@@ -225,7 +225,7 @@ export default function ApiReference() {
 					mark.four &&
 					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
 				}`}>
-				<div>
+				<div className='flex-1'>
 					4. Kapan sebaiknya kita menggunakan{' '}
 					<code className='language-js'>useEffect</code> dengan array
 					dependency kosong <code className='language-js'>[]</code>?
@@ -458,7 +458,7 @@ export default function ApiReference() {
 					mark.ten &&
 					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
 				}`}>
-				<div>
+				<div className='flex-1'>
 					10. Apa yang terjadi jika kita lupa menambahkan{' '}
 					<code className='language-js'>[]</code> di{' '}
 					<code className='language-js'>useEffect</code>?
