@@ -5,6 +5,7 @@ import {
 	RadioGroup,
 	RadioGroupItem,
 } from '@/components/ui/radio-group'
+import { X } from 'lucide-react'
 // import { Metadata } from 'next'
 import { useState } from 'react'
 import { toast } from 'sonner'
@@ -31,15 +32,44 @@ export default function ApiReference() {
 		}))
 	}
 
+	const [mark, setMark] = useState<{ [key: string]: boolean }>({})
+
+	const correctAnswers = {
+		one: 'b',
+		two: 'b',
+		three: 'a',
+		four: 'c',
+		five: 'b',
+	}
+
 	const onSubmit = () => {
-		console.log(form)
-		if (
-			form.one == 'b' &&
-			form.two == 'b' &&
-			form.three == 'a' &&
-			form.four == 'c' &&
-			form.five == 'b'
-		) {
+		// Check if all questions are answered
+		const allAnswered = Object.values(form).every(
+			(value) => value !== ''
+		)
+
+		if (!allAnswered) {
+			toast('Jawaban belum lengkap, pastikan terisi semuanya.')
+			return
+		}
+
+		// Mark incorrect answers only after all are filled
+		const newMark = Object.keys(form).reduce((acc, key) => {
+			if (
+				form[key as keyof typeof form] !==
+				correctAnswers[key as keyof typeof correctAnswers]
+			) {
+				acc[key] = true // Mark only wrong answers
+			}
+			return acc
+		}, {} as { [key: string]: boolean })
+
+		setMark(newMark)
+
+		if (Object.keys(newMark).length > 0) {
+			toast('Maaf jawaban salah, silahkan coba lagi!')
+		} else {
+			toast('Congratulation! Semua jawaban anda benar.')
 			setForm({
 				one: '',
 				two: '',
@@ -47,24 +77,20 @@ export default function ApiReference() {
 				four: '',
 				five: '',
 			})
-			toast('Congratulation! Semua jawaban anda benar.')
-		} else if (
-			form.one == '' ||
-			form.two == '' ||
-			form.three == '' ||
-			form.four == '' ||
-			form.five == ''
-		) {
-			toast('Jawban belum lengkap, pastikan terisi semuanya.')
-		} else {
-			toast('Maaf jawaban salah, silahkan coba lagi!')
+			setMark({})
 		}
 	}
 
 	return (
 		<main className='max-w-3xl mx-auto prose'>
 			<h1>Kuis Props di React 📦✨</h1>
-			<p className='mb-0'>1. Apa itu props di React?</p>
+			<p
+				className={`mb-0 ${
+					mark.one &&
+					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
+				}`}>
+				1. Apa itu props di React? {mark.one && <X />}
+			</p>
 			<RadioGroup
 				className='-space-y-10'
 				value={form.one}
@@ -97,8 +123,13 @@ export default function ApiReference() {
 				</label>
 			</RadioGroup>
 
-			<p className='mb-0'>
-				2. Bagaimana cara mengirim props ke komponen anak?
+			<p
+				className={`mb-0 ${
+					mark.two &&
+					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
+				}`}>
+				2. Bagaimana cara mengirim props ke komponen anak?{' '}
+				{mark.two && <X />}
 			</p>
 			<RadioGroup
 				className='-space-y-10'
@@ -136,8 +167,13 @@ export default function ApiReference() {
 				</label>
 			</RadioGroup>
 
-			<p className='mb-0'>
-				3. Apa yang akan ditampilkan oleh kode ini?
+			<p
+				className={`mb-0 ${
+					mark.three &&
+					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
+				}`}>
+				3. Apa yang akan ditampilkan oleh kode ini?{' '}
+				{mark.three && <X />}
 			</p>
 			<pre>
 				<code className='language-js'>{`funtion Halo(props){
@@ -179,7 +215,13 @@ function App(){
 				</label>
 			</RadioGroup>
 
-			<p className='mb-0'>4. Props bisa berupa apa saja?</p>
+			<p
+				className={`mb-0 ${
+					mark.four &&
+					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
+				}`}>
+				4. Props bisa berupa apa saja? {mark.four && <X />}
+			</p>
 			<pre>
 				<code className='language-js'>{`function add(a, b) {
 	return a + b
@@ -213,8 +255,13 @@ console.log(add(3, 4, 5))`}</code>
 				</label>
 			</RadioGroup>
 
-			<p className='mb-0'>
-				5. Kenapa props tidak boleh diubah oleh komponen anak?
+			<p
+				className={`mb-0 ${
+					mark.five &&
+					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
+				}`}>
+				5. Kenapa props tidak boleh diubah oleh komponen anak?{' '}
+				{mark.five && <X />}
 			</p>
 			<RadioGroup
 				className='-space-y-10'

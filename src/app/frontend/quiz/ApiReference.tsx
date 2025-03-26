@@ -5,6 +5,7 @@ import {
 	RadioGroup,
 	RadioGroupItem,
 } from '@/components/ui/radio-group'
+import { X } from 'lucide-react'
 // import { Metadata } from 'next'
 import { useState } from 'react'
 import { toast } from 'sonner'
@@ -31,15 +32,44 @@ export default function ApiReference() {
 		}))
 	}
 
+	const [mark, setMark] = useState<{ [key: string]: boolean }>({})
+
+	const correctAnswers = {
+		one: 'a',
+		two: 'b',
+		three: 'c',
+		four: 'b',
+		five: 'a',
+	}
+
 	const onSubmit = () => {
-		console.log(form)
-		if (
-			form.one == 'a' &&
-			form.two == 'b' &&
-			form.three == 'c' &&
-			form.four == 'b' &&
-			form.five == 'a'
-		) {
+		// Check if all questions are answered
+		const allAnswered = Object.values(form).every(
+			(value) => value !== ''
+		)
+
+		if (!allAnswered) {
+			toast('Jawaban belum lengkap, pastikan terisi semuanya.')
+			return
+		}
+
+		// Mark incorrect answers only after all are filled
+		const newMark = Object.keys(form).reduce((acc, key) => {
+			if (
+				form[key as keyof typeof form] !==
+				correctAnswers[key as keyof typeof correctAnswers]
+			) {
+				acc[key] = true // Mark only wrong answers
+			}
+			return acc
+		}, {} as { [key: string]: boolean })
+
+		setMark(newMark)
+
+		if (Object.keys(newMark).length > 0) {
+			toast('Maaf jawaban salah, silahkan coba lagi!')
+		} else {
+			toast('Congratulation! Semua jawaban anda benar.')
 			setForm({
 				one: '',
 				two: '',
@@ -47,25 +77,20 @@ export default function ApiReference() {
 				four: '',
 				five: '',
 			})
-			toast('Congratulation! Semua jawaban anda benar.')
-		} else if (
-			form.one == '' ||
-			form.two == '' ||
-			form.three == '' ||
-			form.four == '' ||
-			form.five == ''
-		) {
-			toast('Jawban belum lengkap, pastikan terisi semuanya.')
-		} else {
-			toast('Maaf jawaban salah, silahkan coba lagi!')
+			setMark({})
 		}
 	}
 
 	return (
 		<main className='max-w-3xl mx-auto prose'>
 			<h1>Quiz</h1>
-			<p className='mb-0'>
-				1. Apa 3 elemen utama dalam pembuatan website sederhana?
+			<p
+				className={`mb-0 ${
+					mark.one &&
+					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
+				}`}>
+				1. Apa 3 elemen utama dalam pembuatan website sederhana?{' '}
+				{mark.one && <X />}
 			</p>
 			<RadioGroup
 				className='-space-y-10'
@@ -96,8 +121,13 @@ export default function ApiReference() {
 				</label>
 			</RadioGroup>
 
-			<p className='mb-0'>
-				2. Perhatikan kode berikut ini, apa output yang akan tampil?
+			<p
+				className={`mb-0 ${
+					mark.two &&
+					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
+				}`}>
+				2. Perhatikan kode berikut ini, apa output yang akan tampil?{' '}
+				{mark.two && <X />}
 			</p>
 			<pre>
 				<code className='language-js'>{`let nama = 'Budi'
@@ -131,7 +161,13 @@ console.log(nama)`}</code>
 				</label>
 			</RadioGroup>
 
-			<p className='mb-0'>3. Coba tebak output dari program ini!</p>
+			<p
+				className={`mb-0 ${
+					mark.three &&
+					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
+				}`}>
+				3. Coba tebak output dari program ini! {mark.three && <X />}
+			</p>
 			<pre>
 				<code className='language-js'>{`const menikah = false
 const umur = 28
@@ -171,7 +207,13 @@ if (menikah) {
 				</label>
 			</RadioGroup>
 
-			<p className='mb-0'>4. Kenapa program ini salah?</p>
+			<p
+				className={`mb-0 ${
+					mark.four &&
+					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
+				}`}>
+				4. Kenapa program ini salah? {mark.four && <X />}
+			</p>
 			<pre>
 				<code className='language-js'>{`function add(a, b) {
   return a + b
@@ -205,8 +247,13 @@ console.log(add(3, 4, 5))`}</code>
 				</label>
 			</RadioGroup>
 
-			<p className='mb-0'>
-				5. Apakah javascript bisa digunakan diluar lingkungan browser?
+			<p
+				className={`mb-0 ${
+					mark.five &&
+					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
+				}`}>
+				5. Apakah javascript bisa digunakan diluar lingkungan browser?{' '}
+				{mark.five && <X />}
 			</p>
 			<RadioGroup
 				className='-space-y-10'
@@ -217,22 +264,22 @@ console.log(add(3, 4, 5))`}</code>
 						value='a'
 						id='five-a'
 					/>
-					<p>True</p>
+					<p>Bisa</p>
 				</label>
 				<label className='flex items-center space-x-3'>
 					<RadioGroupItem
 						value='b'
 						id='five-b'
 					/>
-					<p>False</p>
+					<p>Ngga bisa</p>
 				</label>
-				{/* <label className='flex items-center space-x-3'>
-          <RadioGroupItem
-            value='c'
-            id='five-c'
-          />
-          <p>HTML</p>
-        </label> */}
+				<label className='flex items-center space-x-3'>
+					<RadioGroupItem
+						value='c'
+						id='five-c'
+					/>
+					<p>Tidak keduanya</p>
+				</label>
 			</RadioGroup>
 
 			<Button onClick={onSubmit}>Submit</Button>
