@@ -126,7 +126,7 @@ export default function ApiReference() {
 						mark.two &&
 						'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
 					}`}>
-					<div>
+					<div className='flex-1'>
 						2. Apa kegunaan memakai library{' '}
 						<code className='language-js'>Prisma</code> dibanding yang
 						lain?{' '}
@@ -175,7 +175,7 @@ export default function ApiReference() {
 						mark.three &&
 						'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
 					}`}>
-					<div>
+					<div className='flex-1'>
 						3. <code className='language-js'>req.body</code> mendapat
 						nilai <b>nama</b> dan <b>peminjam</b> dari mana?
 					</div>
@@ -278,7 +278,7 @@ export default function ApiReference() {
 						mark.five &&
 						'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
 					}`}>
-					<div>
+					<div className='flex-1'>
 						5. Kenapa kita harus menyimpan nilai variabel penting ke
 						dalam file <code className='language-js'>.env</code>?
 					</div>
