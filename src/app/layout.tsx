@@ -1,7 +1,7 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { DM_Sans } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+const dm_sans = DM_Sans({ subsets: ['latin'] })
 
 export const metadata = {
 	icons: {
@@ -18,7 +18,7 @@ export default function RootLayout({
 		<html
 			lang='en'
 			suppressHydrationWarning>
-			<body className={`${inter.className} antialiased`}>
+			<body className={`${dm_sans.className} antialiased`}>
 				{children}
 			</body>
 		</html>
