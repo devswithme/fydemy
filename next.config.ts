@@ -1,17 +1,16 @@
-import type { NextConfig } from 'next'
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-	/* config options here */
-	output: 'export',
-	images: {
-		unoptimized: true,
-		path: '/',
-		loader: 'imgix',
-	},
-	assetPrefix: '',
-	env: {
-		NEXT_PUBLIC_PWD: 'fysite-ac-id',
-	},
-}
+  /* config options here */
+  images: {
+    unoptimized: true,
+    path: '/',
+    loader: 'imgix',
+  },
+  assetPrefix: '',
+  env: {
+    NEXT_PUBLIC_PWD: 'fysite-ac-id',
+  },
+};
 
-export default nextConfig
+export default nextConfig;
