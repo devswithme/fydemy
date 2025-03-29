@@ -22,11 +22,14 @@ import { auth } from '@/config/firebase'
 import { onAuthStateChanged } from 'firebase/auth'
 import { checkPremiumStatus } from '@/config/firebase/auth'
 import NavUser from './nav-user'
+import { AuthContext } from './provider/AuthProvider'
 
 export function AppSidebar() {
 	const pathname = usePathname()
 	const { isMobile, setOpenMobile } = useSidebar()
 	const [isPremium, setIsPremium] = React.useState<boolean>(false)
+
+	const userAuth = React.useContext(AuthContext)
 
 	// Cek status premium saat user login/logout
 	React.useEffect(() => {
@@ -100,9 +103,10 @@ export function AppSidebar() {
 			<SidebarFooter>
 				<NavUser
 					user={{
-						name: auth.currentUser?.displayName || '',
-						email: auth.currentUser?.email || '',
-						avatar: auth.currentUser?.photoURL || '',
+						name: userAuth?.user?.name || '',
+						email: userAuth?.user?.email || '',
+						avatar: userAuth?.user?.avatar || '',
+						isPremium,
 					}}
 				/>
 			</SidebarFooter>

@@ -1,7 +1,6 @@
 export const metadata = {
-	title: 'Quiz Props',
-	description:
-		'Belajar BackEnd adalah hal yang menyenangkan dan menjadi fondasi untuk pembelajaran kita kedepannya',
+	title: 'Fullstack Props Quiz',
+	description: 'Fullstack Props Quiz',
 }
 
 import ApiReference from '@/app/dashboard/fullstack/quiz-props/ApiReference'

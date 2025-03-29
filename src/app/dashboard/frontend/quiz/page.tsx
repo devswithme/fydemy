@@ -1,7 +1,6 @@
 export const metadata = {
-	title: 'Quiz FronEnd',
-	description:
-		'Belajar BackEnd adalah hal yang menyenangkan dan menjadi fondasi untuk pembelajaran kita kedepannya',
+	title: 'Frontend Quiz',
+	description: 'Frontend Quiz',
 }
 
 import ApiReference from '@/app/dashboard/frontend/quiz/ApiReference'

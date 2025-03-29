@@ -9,6 +9,7 @@ import { Toaster } from '@/components/ui/sonner'
 import HighlightProvider from '@/components/provider/HighlightProvider'
 import Link from 'next/link'
 import Image from 'next/image'
+import { AuthProvider } from '@/components/provider/AuthProvider'
 
 export default function RootLayout({
 	children,
@@ -16,7 +17,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<>
+		<AuthProvider>
 			<Toaster />
 			<SidebarProvider>
 				<AppSidebar />
@@ -38,6 +39,6 @@ export default function RootLayout({
 					</main>
 				</HighlightProvider>
 			</SidebarProvider>
-		</>
+		</AuthProvider>
 	)
 }

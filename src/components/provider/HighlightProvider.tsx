@@ -1,17 +1,19 @@
 'use client'
 
-import { ReactNode, useEffect } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import Prism from 'prismjs'
 // import 'prismjs/themes/prism-dark.css'
 import { usePathname } from 'next/navigation'
 
 const HighlightProvider = ({ children }: { children: ReactNode }) => {
 	const pathname = usePathname()
+	const [mounted, setMoumted] = useState(false)
 	useEffect(() => {
 		Prism.highlightAll()
-	}, [pathname])
+		setMoumted(true)
+	}, [pathname, mounted])
 
-	return children
+	return mounted ? children : ''
 }
 
 export default HighlightProvider
