@@ -3,7 +3,7 @@ export const metadata = {
 	description: 'Frontend Quiz',
 }
 
-import ApiReference from '@/app/dashboard/frontend/quiz/ApiReference'
+import ApiReference from '@/app/dashboard/(premium)/frontend/quiz/ApiReference'
 
 export default function QuizPage() {
 	return <ApiReference />

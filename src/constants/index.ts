@@ -1,4 +1,20 @@
-import { Atom, Box, Code2, Download, FastForward, FileQuestion, Forward, Frame, LogIn, Printer, Rocket, SquareTerminal, Wand, Waypoints, Workflow } from 'lucide-react';
+import {
+  Atom,
+  Box,
+  Code2,
+  Download,
+  FastForward,
+  FileQuestion,
+  Forward,
+  Frame,
+  LogIn,
+  Printer,
+  Rocket,
+  SquareTerminal,
+  Wand,
+  Waypoints,
+  Workflow,
+} from 'lucide-react';
 
 export const navItems = [
   {
@@ -28,12 +44,12 @@ export const navItems = [
         title: 'Projects',
         url: '/dashboard/uiux/projects',
         icon: Workflow,
-        premium: true,
       },
     ],
   },
   {
     name: 'Front-End',
+    premium: true,
     items: [
       {
         title: 'Introduction',
@@ -54,12 +70,12 @@ export const navItems = [
         title: 'Projects',
         url: '/dashboard/frontend/projects',
         icon: Workflow,
-        premium: true,
       },
     ],
   },
   {
     name: 'Back-End',
+    premium: true,
     items: [
       {
         title: 'Introduction',
@@ -85,12 +101,12 @@ export const navItems = [
         title: 'Projects',
         url: '/dashboard/backend/projects',
         icon: Workflow,
-        premium: true,
       },
     ],
   },
   {
     name: 'Full-Stack',
+    premium: true,
     items: [
       {
         title: 'React.js',
@@ -151,7 +167,6 @@ export const navItems = [
         title: 'Deploy',
         url: '/dashboard/fullstack/deploy',
         icon: Rocket,
-        premium: true,
       },
     ],
   },
