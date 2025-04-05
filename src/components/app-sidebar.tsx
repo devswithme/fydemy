@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import Image from 'next/image';
-import { navItems } from '@/constants/constant';
+import * as React from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
+import { navItems } from "@/constants/constant";
 import {
   Sidebar,
   SidebarContent,
@@ -17,12 +17,12 @@ import {
   SidebarMenuButton,
   useSidebar,
   SidebarFooter,
-} from '@/components/ui/sidebar';
-import { auth } from '@/config/firebase';
-import { onAuthStateChanged } from 'firebase/auth';
-import { checkPremiumStatus } from '@/config/firebase/auth';
-import NavUser from './nav-user';
-import { AuthContext } from './provider/AuthProvider';
+} from "@/components/ui/sidebar";
+import { auth } from "@/config/firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import { checkPremiumStatus } from "@/config/firebase/auth";
+import NavUser from "./nav-user";
+import { AuthContext } from "./provider/AuthProvider";
 
 export function AppSidebar() {
   const pathname = usePathname();
@@ -51,16 +51,24 @@ export function AppSidebar() {
     }
   }, [pathname, isMobile]);
 
-  const filteredNavItems = isPremium ? navItems : navItems.filter((item) => !item.premium);
+  const filteredNavItems = isPremium
+    ? navItems
+    : navItems.filter((item) => !item.premium);
 
   return (
     <Sidebar>
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size='lg' asChild>
-              <Link href='/dashboard'>
-                <Image src='/logo.svg' alt='logo' width={90} height={90} />
+            <SidebarMenuButton size="lg" asChild>
+              <Link href="/dashboard">
+                <Image
+                  priority
+                  src="/logo.svg"
+                  alt="logo"
+                  width={90}
+                  height={90}
+                />
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -90,9 +98,9 @@ export function AppSidebar() {
       <SidebarFooter>
         <NavUser
           user={{
-            name: userAuth?.user?.name || '',
-            email: userAuth?.user?.email || '',
-            avatar: userAuth?.user?.avatar || '',
+            name: userAuth?.user?.name || "",
+            email: userAuth?.user?.email || "",
+            avatar: userAuth?.user?.avatar || "",
             isPremium,
           }}
         />

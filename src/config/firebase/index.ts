@@ -1,7 +1,7 @@
-import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { get, getDatabase, ref, set } from 'firebase/database';
-import { checkPremiumStatus } from './auth';
+import { initializeApp } from "firebase/app";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { get, getDatabase, ref, set } from "firebase/database";
+import { checkPremiumStatus } from "./auth";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -22,9 +22,22 @@ export const googleProvider = new GoogleAuthProvider();
 export const signInWithGoogle = async () => {
   try {
     const result = await signInWithPopup(auth, googleProvider);
-    return result.user;
+    const user = result.user;
+    // Cek dan simpan ke database jika belum ada
+    const userRef = ref(db, `users/${user.uid}`);
+    const snapshot = await get(userRef);
+
+    if (!snapshot.exists()) {
+      await set(userRef, {
+        username: user.displayName,
+        isPremium: false,
+        xp: 0,
+      });
+    }
+
+    return user;
   } catch (error) {
-    console.error('Login failed', error);
+    console.error("Login failed", error);
     throw error;
   }
 };
@@ -40,7 +53,34 @@ export const updateXp = async (point: number) => {
     const snapshot = await get(userRef);
 
     const value = snapshot.val();
-    const totalXp = typeof value === 'number' ? value + point : 0;
+    const totalXp = typeof value === "number" ? value + point : 0;
     set(userRef, totalXp);
+  }
+};
+
+import { query, orderByChild, limitToLast } from "firebase/database";
+
+export const getTopUsersByXp = async () => {
+  try {
+    const usersRef = ref(db, "users");
+    const topUsersQuery = query(usersRef, orderByChild("xp"), limitToLast(3));
+    const snapshot = await get(topUsersQuery);
+
+    if (snapshot.exists()) {
+      const users = snapshot.val();
+      // Convert the object to an array and sort by XP in descending order
+      const sortedUsers = Object.entries(users)
+        // @ts-expect-error data is not typed
+        .map(([uid, data]) => ({ uid, ...data }))
+        .sort((a, b) => b.xp - a.xp);
+
+      return sortedUsers;
+    } else {
+      console.log("No users found");
+      return [];
+    }
+  } catch (error) {
+    console.error("Failed to retrieve top users", error);
+    throw error;
   }
 };

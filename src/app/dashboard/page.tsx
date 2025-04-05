@@ -1,12 +1,20 @@
-import Dashboard from '@/components/dashboard'
-import { Metadata } from 'next'
+import Dashboard from "@/components/dashboard";
+import { getTopUsersByXp } from "@/config/firebase";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: 'Home',
-	description:
-		'Halo, selamat datang! Terima kasih sudah membeli modul ini.',
-}
+  title: "Home",
+  description: "Halo, selamat datang! Terima kasih sudah membeli modul ini.",
+};
 
-export default function Page() {
-	return <Dashboard />
+export default async function Page() {
+  const ranks = (await getTopUsersByXp()) as [
+    {
+      uid: string;
+      username: string;
+      isPremium: boolean;
+      xp: number;
+    }
+  ];
+  return <Dashboard ranks={ranks} />;
 }
