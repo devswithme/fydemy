@@ -1,288 +1,87 @@
-'use client'
+'use client';
 
-import { Button } from '@/components/ui/button'
-import {
-	RadioGroup,
-	RadioGroupItem,
-} from '@/components/ui/radio-group'
-import { X } from 'lucide-react'
-// import { Metadata } from 'next'
-import { useState } from 'react'
-import { toast } from 'sonner'
-
-// export const metadata: Metadata = {
-// 	title: 'Frontend Introduction',
-// 	description:
-// 		'Belajar frontend adalah hal yang menyenangkan dan menjadi fondasi untuk pembelajaran kita kedepannya',
-// }
+import Quiz from '@/components/quiz';
+import { Button } from '@/components/ui/button';
+import { updateXp } from '@/config/firebase';
+import { quizItems } from '@/constants/constant';
+import { usePathname } from 'next/navigation';
+import { useState } from 'react';
+import { toast } from 'sonner';
 
 export default function ApiReference() {
-	const [form, setForm] = useState({
-		one: '',
-		two: '',
-		three: '',
-		four: '',
-		five: '',
-	})
+  const path = usePathname();
+  const quiz = quizItems.find((q) => q.name === path)?.items ?? [];
 
-	const handleChange = (key: string, value: string) => {
-		setForm((prev) => ({
-			...prev,
-			[key]: value,
-		}))
-	}
+  const [form, setForm] = useState({
+    one: '',
+    two: '',
+    three: '',
+    four: '',
+    five: '',
+  });
 
-	const [mark, setMark] = useState<{ [key: string]: boolean }>({})
+  const handleChange = (key: string, value: string) => {
+    setForm((prev) => ({
+      ...prev,
+      [key]: value,
+    }));
+  };
 
-	const correctAnswers = {
-		one: 'a',
-		two: 'b',
-		three: 'c',
-		four: 'b',
-		five: 'a',
-	}
+  const [mark, setMark] = useState<{ [key: string]: boolean }>({});
 
-	const onSubmit = () => {
-		// Check if all questions are answered
-		const allAnswered = Object.values(form).every(
-			(value) => value !== ''
-		)
+  const correctAnswers = {
+    one: 'a',
+    two: 'b',
+    three: 'c',
+    four: 'b',
+    five: 'a',
+  };
 
-		if (!allAnswered) {
-			toast('Jawaban belum lengkap, pastikan terisi semuanya.')
-			return
-		}
+  const onSubmit = () => {
+    // Check if all questions are answered
+    const allAnswered = Object.values(form).every((value) => value !== '');
 
-		// Mark incorrect answers only after all are filled
-		const newMark = Object.keys(form).reduce((acc, key) => {
-			if (
-				form[key as keyof typeof form] !==
-				correctAnswers[key as keyof typeof correctAnswers]
-			) {
-				acc[key] = true // Mark only wrong answers
-			}
-			return acc
-		}, {} as { [key: string]: boolean })
+    if (!allAnswered) {
+      toast('Jawaban belum lengkap, pastikan terisi semuanya.');
+      return;
+    }
 
-		setMark(newMark)
+    // Mark incorrect answers only after all are filled
+    const newMark = Object.keys(form).reduce((acc, key) => {
+      if (form[key as keyof typeof form] !== correctAnswers[key as keyof typeof correctAnswers]) {
+        acc[key] = true; // Mark only wrong answers
+      }
+      return acc;
+    }, {} as { [key: string]: boolean });
 
-		if (Object.keys(newMark).length > 0) {
-			toast('Maaf jawaban salah, silahkan coba lagi!')
-		} else {
-			toast('Congratulation! Semua jawaban anda benar.')
-			setForm({
-				one: '',
-				two: '',
-				three: '',
-				four: '',
-				five: '',
-			})
-			setMark({})
-		}
-	}
+    setMark(newMark);
 
-	return (
-		<main className='max-w-3xl mx-auto prose'>
-			<h1>Quiz</h1>
-			<p
-				className={`mb-0 ${
-					mark.one &&
-					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
-				}`}>
-				1. Apa 3 elemen utama dalam pembuatan website sederhana?{' '}
-				{mark.one && <X />}
-			</p>
-			<RadioGroup
-				className='-space-y-10'
-				value={form.one}
-				onValueChange={(value) => handleChange('one', value)}>
-				<label
-					className='flex items-center space-x-3'
-					id='one-a'>
-					<RadioGroupItem
-						value='a'
-						id='one-a'
-					/>
-					<p>HTML, CSS, Javascript</p>
-				</label>
-				<label className='flex items-center space-x-3'>
-					<RadioGroupItem
-						value='b'
-						id='one-b'
-					/>
-					<p>HTML, CSS, Java</p>
-				</label>
-				<label className='flex items-center space-x-3'>
-					<RadioGroupItem
-						value='c'
-						id='one-c'
-					/>
-					<p>HTMX, CSS, Javascript</p>
-				</label>
-			</RadioGroup>
+    //get point for xp
+    const point = quiz.map((item) => item.point).reduce((a, b) => a + b, 0);
 
-			<p
-				className={`mb-0 ${
-					mark.two &&
-					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
-				}`}>
-				2. Perhatikan kode berikut ini, apa output yang akan tampil?{' '}
-				{mark.two && <X />}
-			</p>
-			<pre>
-				<code className='language-js'>{`let nama = 'Budi'
-nama = 'Yanto'
-console.log(nama)`}</code>
-			</pre>
-			<RadioGroup
-				className='-space-y-10'
-				value={form.two}
-				onValueChange={(value) => handleChange('two', value)}>
-				<label className='flex items-center space-x-3'>
-					<RadioGroupItem
-						value='a'
-						id='two-a'
-					/>
-					<p>Budi</p>
-				</label>
-				<label className='flex items-center space-x-3'>
-					<RadioGroupItem
-						value='b'
-						id='two-b'
-					/>
-					<p>Yanto</p>
-				</label>
-				<label className='flex items-center space-x-3'>
-					<RadioGroupItem
-						value='c'
-						id='two-c'
-					/>
-					<p>Error</p>
-				</label>
-			</RadioGroup>
+    if (Object.keys(newMark).length > 0) {
+      toast('Maaf jawaban salah, silahkan coba lagi!');
+    } else {
+      updateXp(point);
+      toast('Congratulation! Semua jawaban anda benar.');
+      setForm({
+        one: '',
+        two: '',
+        three: '',
+        four: '',
+        five: '',
+      });
+      setMark({});
+    }
+  };
 
-			<p
-				className={`mb-0 ${
-					mark.three &&
-					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
-				}`}>
-				3. Coba tebak output dari program ini! {mark.three && <X />}
-			</p>
-			<pre>
-				<code className='language-js'>{`const menikah = false
-const umur = 28
-
-if (menikah) {
-  console.log('selamat')
-} else if (!menikah && umur > 30) {
-  console.log('semoga dapat jodoh')
-} else {
-  console.log('sabar ya')
-}`}</code>
-			</pre>
-			<RadioGroup
-				className='-space-y-10'
-				value={form.three}
-				onValueChange={(value) => handleChange('three', value)}>
-				<label className='flex items-center space-x-3'>
-					<RadioGroupItem
-						value='a'
-						id='three-a'
-					/>
-					<p>selamat</p>
-				</label>
-				<label className='flex items-center space-x-3'>
-					<RadioGroupItem
-						value='b'
-						id='three-b'
-					/>
-					<p>semoga dapat jodoh</p>
-				</label>
-				<label className='flex items-center space-x-3'>
-					<RadioGroupItem
-						value='c'
-						id='three-c'
-					/>
-					<p>sabar ya</p>
-				</label>
-			</RadioGroup>
-
-			<p
-				className={`mb-0 ${
-					mark.four &&
-					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
-				}`}>
-				4. Kenapa program ini salah? {mark.four && <X />}
-			</p>
-			<pre>
-				<code className='language-js'>{`function add(a, b) {
-  return a + b
-}
-console.log(add(3, 4, 5))`}</code>
-			</pre>
-			<RadioGroup
-				className='-space-y-10'
-				value={form.four}
-				onValueChange={(value) => handleChange('four', value)}>
-				<label className='flex items-center space-x-3'>
-					<RadioGroupItem
-						value='a'
-						id='four-a'
-					/>
-					<p>Tipe data parameter tidak sesuai</p>
-				</label>
-				<label className='flex items-center space-x-3'>
-					<RadioGroupItem
-						value='b'
-						id='four-b'
-					/>
-					<p>Jumlah parameter diluar yang sudah didefinisikan</p>
-				</label>
-				<label className='flex items-center space-x-3'>
-					<RadioGroupItem
-						value='c'
-						id='four-c'
-					/>
-					<p>Kegunaan fungsi tidak cocok</p>
-				</label>
-			</RadioGroup>
-
-			<p
-				className={`mb-0 ${
-					mark.five &&
-					'bg-red-50 px-4 py-2 rounded-md text-red-600 flex justify-between items-center'
-				}`}>
-				5. Apakah javascript bisa digunakan diluar lingkungan browser?{' '}
-				{mark.five && <X />}
-			</p>
-			<RadioGroup
-				className='-space-y-10'
-				value={form.five}
-				onValueChange={(value) => handleChange('five', value)}>
-				<label className='flex items-center space-x-3'>
-					<RadioGroupItem
-						value='a'
-						id='five-a'
-					/>
-					<p>Bisa</p>
-				</label>
-				<label className='flex items-center space-x-3'>
-					<RadioGroupItem
-						value='b'
-						id='five-b'
-					/>
-					<p>Ngga bisa</p>
-				</label>
-				<label className='flex items-center space-x-3'>
-					<RadioGroupItem
-						value='c'
-						id='five-c'
-					/>
-					<p>Tidak keduanya</p>
-				</label>
-			</RadioGroup>
-
-			<Button onClick={onSubmit}>Submit</Button>
-		</main>
-	)
+  return (
+    <main className='max-w-3xl mx-auto prose'>
+      <h1>Quiz</h1>
+      {quiz.map((item, index) => (
+        <Quiz key={index} form={form} mark={mark} item={item} handleChange={handleChange} />
+      ))}
+      <Button onClick={onSubmit}>Submit</Button>
+    </main>
+  );
 }

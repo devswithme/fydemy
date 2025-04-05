@@ -25,8 +25,9 @@ Buat realtime database
   {
   "users": {
     "userId123": {
-      "email": "user@example.com",
-      "isPremium": true
+      "email": string,
+      "isPremium": boolean,
+      "xp": number,
     }
   }
 }
