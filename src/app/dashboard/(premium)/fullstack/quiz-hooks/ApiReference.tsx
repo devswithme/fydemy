@@ -43,9 +43,10 @@ export default function ApiReference() {
     eight: 'c',
   };
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     // Check if all questions are answered
     const allAnswered = Object.values(form).every((value) => value !== '');
+    const minimumCorrect = Math.ceil(quiz.length / 2.2);
 
     if (!allAnswered) {
       toast('Jawaban belum lengkap, pastikan terisi semuanya.');
@@ -62,25 +63,30 @@ export default function ApiReference() {
 
     setMark(newMark);
 
-    //get point for xp
-    const point = quiz.map((item) => item.point).reduce((a, b) => a + b, 0);
+    const isCorrect = quiz.filter((item) => !newMark[item.id]).length;
+    const point = quiz
+      .filter((item) => !newMark[item.id])
+      .map((item) => item.point)
+      .reduce((a, b) => a + b, 0);
+    const emptyForm = quiz
+      .map((item) => item.id)
+      .reduce((acc, item) => ({ ...acc, [item]: '' }), {}) as typeof form;
 
-    if (Object.keys(newMark).length > 0) {
-      toast('Maaf jawaban salah, silahkan coba lagi!');
-    } else {
-      updateXp(point);
-      toast('Congratulation! Semua jawaban anda benar.');
-      setForm({
-        one: '',
-        two: '',
-        three: '',
-        four: '',
-        five: '',
-        six: '',
-        seven: '',
-        eight: '',
-      });
+    if (isCorrect >= minimumCorrect) {
+      setForm(emptyForm);
       setMark({});
+
+      const isCompleted = await updateXp(point, path);
+
+      if (isCompleted) {
+        toast(`Congratulation! Kamu berhasil menjawab ${isCorrect} pertanyaan!`);
+      } else {
+        toast('Anda sudah mengerjakan quiz ini');
+      }
+    } else {
+      toast(
+        `Minimal anda harus menjawab ${minimumCorrect} pertanyaan dengan benar, silahkan coba lagi!`
+      );
     }
   };
 

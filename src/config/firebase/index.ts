@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { get, getDatabase, ref, set } from "firebase/database";
+import { get, getDatabase, ref, set, update } from "firebase/database";
 import { checkPremiumStatus } from "./auth";
 
 const firebaseConfig = {
@@ -42,19 +42,30 @@ export const signInWithGoogle = async () => {
   }
 };
 
-export const updateXp = async (point: number) => {
+export const updateXp = async (point: number, path: string) => {
   const currentUser = auth.currentUser;
   if (!currentUser) return;
 
   const premiumStatus = await checkPremiumStatus(currentUser.uid);
 
   if (premiumStatus) {
-    const userRef = ref(db, `users/${currentUser.uid}/xp`);
-    const snapshot = await get(userRef);
+    const userRef = ref(db, `users/${currentUser.uid}`);
+    const xpRef = ref(db, `users/${currentUser.uid}/xp`);
+    const snapshot = await get(xpRef);
+    const userSnapshot = await get(userRef);
 
     const value = snapshot.val();
     const totalXp = typeof value === "number" ? value + point : 0;
-    set(userRef, totalXp);
+    const quiz = userSnapshot.val().completedQuiz;
+    const isCompleted = userSnapshot.val().completedQuiz ? Object.values(userSnapshot.val().completedQuiz) : [];
+
+    if (!isCompleted.includes(path) || isCompleted.length === 0) {
+      update(userRef, { completedQuiz: { ...quiz, [(Math.random() * 100).toFixed()]: path } });
+      set(xpRef, totalXp);
+      return true
+    } else {
+      return false;
+    }
   }
 };
 
