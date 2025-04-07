@@ -83,7 +83,9 @@ export default function ApiReference() {
       const isCompleted = await updateXp(point, path);
 
       if (isCompleted) {
-        toast(`Congratulation! Kamu berhasil menjawab ${isCorrect} pertanyaan!`);
+        toast(
+          `Congratulation! Kamu berhasil menjawab ${isCorrect} pertanyaan!, dan mendapatkan ${point} XP!`
+        );
       } else {
         toast('Anda sudah mengerjakan quiz ini');
       }
