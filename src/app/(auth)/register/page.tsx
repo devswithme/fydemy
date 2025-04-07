@@ -6,7 +6,7 @@ import { Button, buttonVariants } from '@/components/ui/button'
 import { ArrowLeft } from 'lucide-react'
 import { signInWithGoogle } from '@/config/firebase/index'
 import { useRouter } from 'next/navigation'
-import { setCookies } from '@/hooks/useCookies'
+import { setCookies } from '@/actions'
 
 export default function RegisterPage() {
 	const router = useRouter()

@@ -29,9 +29,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { logout } from "@/hooks/useCookies";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { Logout } from "@/actions";
 
 const NavUser = ({
   user,
@@ -62,8 +62,6 @@ const NavUser = ({
       setXp(0);
     }
   }, [user.isPremium]);
-
-  console.log(user);
 
   return (
     <SidebarMenu>
@@ -164,7 +162,7 @@ const NavUser = ({
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={() => {
-                logout();
+                Logout();
                 router.refresh();
               }}
             >
