@@ -47,12 +47,17 @@ const Home = ({
   return (
     <>
       {/* <div className='fixed inset-0 h-full w-full bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] -z-20 [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_60%,transparent_100%)]' /> */}
-      <Button
-        className="fixed bottom-8 right-8 z-50 bg-green-700 border-black text-white"
-        variant="menu"
+      <Link
+        href="https://chat.whatsapp.com/JB4Co43TxUdCBmTQ5BjnHN"
+        target="_blank"
+        className={buttonVariants({
+          className:
+            "fixed bottom-8 right-8 z-50 !bg-green-700 border-black text-white",
+          variant: "menu",
+        })}
       >
         <MessageCircle /> Contact us
-      </Button>
+      </Link>
       <nav className="fixed top-0 left-0 w-full backdrop-blur-lg z-20">
         <div className="max-w-4xl mx-auto py-6 px-8 lg:px-0 flex justify-between items-center">
           <Link href="/">

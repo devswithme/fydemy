@@ -61,10 +61,7 @@ export default function Dashboard({
 
       <h4>❓ Fitur (All): Quiz</h4>
       <ul className="list-decimal marker:text-black">
-        <li>
-          Ada quiz di setiap modulnya, pastikan di jawab dengan benar untuk
-          mendapatkan XP!
-        </li>
+        <li>Ada quiz di setiap modulnya, pastikan di jawab dengan benar</li>
         <li>
           Jawaban akan dicek otomatis, anda dapat mengetahui jawaban yang salah
           setelah submit untuk menambah pemahaman

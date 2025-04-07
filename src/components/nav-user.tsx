@@ -63,6 +63,8 @@ const NavUser = ({
     }
   }, [user.isPremium]);
 
+  console.log(user);
+
   return (
     <SidebarMenu>
       <SidebarMenuItem>
@@ -77,7 +79,11 @@ const NavUser = ({
                   user.isPremium && "ring-2 ring-blue-700 ring-offset-1"
                 }`}
               >
-                <AvatarImage src={user.avatar} alt={user.name} />
+                <AvatarImage
+                  src={user.avatar}
+                  className="object-cover"
+                  alt={user.name}
+                />
                 <AvatarFallback>
                   {user.name
                     .split(" ")
@@ -103,7 +109,7 @@ const NavUser = ({
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-6 w-6">
-                  <AvatarImage src={user.avatar} alt={user.name} />
+                  <AvatarImage src={user.avatar || ""} alt={user.name} />
                   <AvatarFallback>
                     {user.name
                       .split(" ")
@@ -133,14 +139,17 @@ const NavUser = ({
             <DropdownMenuGroup>
               {!user.isPremium && (
                 <DropdownMenuItem asChild>
-                  <Link href="https://academy.fysite.id">
+                  <Link href="https://academy.fysite.id" target="_blank">
                     <Sparkles />
                     Upgrade to Pro
                   </Link>
                 </DropdownMenuItem>
               )}
               <DropdownMenuItem asChild>
-                <Link href="https://chat.whatsapp.com/GKCYDtVk22u0VTBtPHXzEm">
+                <Link
+                  href="https://chat.whatsapp.com/GKCYDtVk22u0VTBtPHXzEm"
+                  target="_blank"
+                >
                   <Users />
                   Community
                 </Link>

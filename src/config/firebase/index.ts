@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { get, getDatabase, ref, set, update } from "firebase/database";
 import { checkPremiumStatus } from "./auth";
+import { query, orderByChild, limitToLast } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -57,19 +58,21 @@ export const updateXp = async (point: number, path: string) => {
     const value = snapshot.val();
     const totalXp = typeof value === "number" ? value + point : 0;
     const quiz = userSnapshot.val().completedQuiz;
-    const isCompleted = userSnapshot.val().completedQuiz ? Object.values(userSnapshot.val().completedQuiz) : [];
+    const isCompleted = userSnapshot.val().completedQuiz
+      ? Object.values(userSnapshot.val().completedQuiz)
+      : [];
 
     if (!isCompleted.includes(path) || isCompleted.length === 0) {
-      update(userRef, { completedQuiz: { ...quiz, [(Math.random() * 100).toFixed()]: path } });
+      update(userRef, {
+        completedQuiz: { ...quiz, [(Math.random() * 100).toFixed()]: path },
+      });
       set(xpRef, totalXp);
-      return true
+      return true;
     } else {
       return false;
     }
   }
 };
-
-import { query, orderByChild, limitToLast } from "firebase/database";
 
 export const getTopUsersByXp = async () => {
   try {
