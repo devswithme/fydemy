@@ -31,19 +31,21 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import Autoplay from "embla-carousel-autoplay";
+import { getTopUsersByXp } from "@/config/firebase";
+import { useEffect, useState } from "react";
 
-const Home = ({
-  ranks,
-}: {
-  ranks: [
-    {
-      uid: string;
-      username: string;
-      isPremium: boolean;
-      xp: number;
-    }
-  ];
-}) => {
+const Home = () => {
+  const [ranks, setRanks] = useState(null);
+
+  useEffect(() => {
+    const fetchRanks = async () => {
+      const ranks = await getTopUsersByXp();
+      // @ts-expect-error data is not typed
+      setRanks(ranks);
+    };
+    fetchRanks();
+  }, []);
+
   return (
     <>
       {/* <div className='fixed inset-0 h-full w-full bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] -z-20 [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_60%,transparent_100%)]' /> */}
@@ -157,13 +159,16 @@ const Home = ({
                 </TableRow>
               </TableHeader>
               <TableBody className="text-xs sm:text-sm">
-                {ranks.map((user, i) => (
-                  <TableRow key={user.uid}>
-                    <TableCell className="pl-6 py-3">{`#${i + 1}`}</TableCell>
-                    <TableCell>{user.username}</TableCell>
-                    <TableCell>{user.xp} XP</TableCell>
-                  </TableRow>
-                ))}
+                {
+                  // @ts-expect-error data is not typed
+                  ranks?.map((user, i) => (
+                    <TableRow key={user.uid}>
+                      <TableCell className="pl-6 py-3">{`#${i + 1}`}</TableCell>
+                      <TableCell>{user.username}</TableCell>
+                      <TableCell>{user.xp} XP</TableCell>
+                    </TableRow>
+                  ))
+                }
               </TableBody>
             </Table>
           </div>
