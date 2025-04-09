@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/table";
 import {
   ArrowUpRight,
+  Book,
   Check,
   Code,
   CodeXml,
@@ -33,6 +34,12 @@ import Link from "next/link";
 import Autoplay from "embla-carousel-autoplay";
 import { getTopUsersByXp } from "@/config/firebase";
 import { useEffect, useState } from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "./ui/accordion";
 
 const Home = () => {
   const [ranks, setRanks] = useState(null);
@@ -185,12 +192,19 @@ const Home = () => {
             </div>
           </div>
           <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-6 rounded-xl border-2 border-black bg-neutral-50 space-y-2 shadow-lg">
-              <h1 className="text-lg sm:text-xl font-semibold flex gap-x-3 items-center">
-                <Code className="w-4 h-4 text-blue-700" strokeWidth={3} />
-                Basic
-              </h1>
-              <h1 className="text-base sm:text-lg">Free</h1>
+            <div className="p-6 rounded-xl border-2 border-blue-700 bg-neutral-50 space-y-2 shadow-lg shadow-blue-700/30">
+              <div className="flex gap-x-4 items-center">
+                <Book
+                  className="w-8 h-8 p-2 bg-blue-50 fill-blue-400"
+                  strokeWidth={3}
+                />
+                <div className="-space-y-1">
+                  <h1 className="text-base sm:text-lg font-semibold flex gap-x-3 items-center">
+                    Basic
+                  </h1>
+                  <h1 className="text-sm sm:text-base">Free</h1>
+                </div>
+              </div>
               <ul className="space-y-1 text-sm sm:text-base">
                 <li className="flex items-center gap-x-2">
                   <Check className="w-4 h-4 text-green-600" />
@@ -218,17 +232,21 @@ const Home = () => {
                 </li>
               </ul>
             </div>
-            <div className="p-6 rounded-xl border-2 space-y-2 border-blue-700 bg-blue-50 shadow-lg shadow-blue-700/30">
-              <h1 className="text-lg sm:text-xl font-semibold flex gap-x-3 items-center">
-                <Sparkles className="w-4 h-4 fill-yellow-500 text-yellow-500" />{" "}
-                Premium
-              </h1>
-              <h1 className="text-base sm:text-lg">
-                <span className="line-through text-muted-foreground">
-                  400K/mo
-                </span>{" "}
-                200K/mo
-              </h1>
+            <div className="p-6 rounded-xl border-2 space-y-2 border-yellow-700 shadow-lg shadow-yellow-700/30">
+              <div className="flex items-center gap-x-4">
+                <Sparkles className="p-2 bg-yellow-50 fill-yellow-500 w-8 h-8 rounded-md" />
+                <div className="-space-y-1">
+                  <h1 className="text-base sm:text-lg font-semibold">
+                    Premium
+                  </h1>
+                  <h1 className="text-sm sm:text-base">
+                    <span className="line-through text-muted-foreground">
+                      400K/mo
+                    </span>{" "}
+                    200K/mo
+                  </h1>
+                </div>
+              </div>
               <ul className="space-y-1 text-sm sm:text-base">
                 <li className="flex items-center gap-x-2">
                   <Check className="w-4 h-4 text-green-600" />
@@ -308,7 +326,7 @@ const Home = () => {
 						</Table> */}
           </div>
         </section>
-        <section className="grid grid-cols-1 gap-10 items-center">
+        {/* <section className="grid grid-cols-1 gap-10 items-center">
           <h1 className="text-3xl sm:text-4xl text-center font-semibold tracking-tighter text-balance">
             What our users say
           </h1>
@@ -379,7 +397,72 @@ const Home = () => {
                 </div>
               </CarouselItem>
             </CarouselContent>
-          </Carousel>
+          </Carousel> */}
+        <section className="grid grid-cols-1 gap-10 items-center">
+          <div className="space-y-4 text-center">
+            <h1 className="text-3xl sm:text-4xl font-semibold tracking-tighter text-balance">
+              FAQs
+            </h1>
+            <p className="text-sm sm:text-base text-muted-foreground">
+              Frequently asked questions about the program.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <Accordion type="single" collapsible>
+              <AccordionItem value="item-1">
+                <AccordionTrigger>
+                  Bagaimana cara melakukan pembayaran untuk package premium?
+                </AccordionTrigger>
+                <AccordionContent>
+                  Pembayaran dapat dilakukan melalui{" "}
+                  <Link
+                    href="https://plans.fysite.id"
+                    target="_blank"
+                    className="underline text-blue-700 font-semibold"
+                  >
+                    plans.fysite.id
+                  </Link>
+                  .
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+            <Accordion type="single" collapsible>
+              <AccordionItem value="item-2">
+                <AccordionTrigger>
+                  Bagaimana cara membuka fitur XP dan bersaing?
+                </AccordionTrigger>
+                <AccordionContent>
+                  Fitur XP dan bersaing dapat diakses{" "}
+                  <b>setelah melakukan pembayaran</b> package premium.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+            <Accordion type="single" collapsible>
+              <AccordionItem value="item-3">
+                <AccordionTrigger>
+                  Apakah saya akan mendapat sertifikat bila telah menyelesaikan
+                  modul-modul ini?
+                </AccordionTrigger>
+                <AccordionContent>
+                  Iya, dengan syarat anda menyelesaikan semua modul, quiz,
+                  submission dengan <b>nilai (XP) yang memuaskan</b>.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+            <Accordion type="single" collapsible>
+              <AccordionItem value="item-3">
+                <AccordionTrigger>
+                  Berapa kali saya akan mendapatkan jadwal untuk private
+                  mentoring?
+                </AccordionTrigger>
+                <AccordionContent>
+                  Per-bulannya anda akan mendapatkan <b>4x private meeting</b>{" "}
+                  bersama mentor dan teman sekawan.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
         </section>
         <footer className="bg-blue-700 rounded-xl border-2 w-full h-fit p-8 sm:p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 border-black text-white">
           <div className="space-y-2">
