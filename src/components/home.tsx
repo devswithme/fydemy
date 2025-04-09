@@ -1,12 +1,12 @@
 "use client";
 
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
+// import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button, buttonVariants } from "@/components/ui/button";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
+// import {
+//   Carousel,
+//   CarouselContent,
+//   CarouselItem,
+// } from "@/components/ui/carousel";
 import {
   Table,
   TableBody,
@@ -19,7 +19,7 @@ import {
   ArrowUpRight,
   Book,
   Check,
-  Code,
+  // Code,
   CodeXml,
   Frame,
   LogIn,
@@ -31,7 +31,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import Autoplay from "embla-carousel-autoplay";
+// import Autoplay from "embla-carousel-autoplay";
 import { getTopUsersByXp } from "@/config/firebase";
 import { useEffect, useState } from "react";
 import {
