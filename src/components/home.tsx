@@ -169,9 +169,14 @@ const Home = () => {
                 {
                   // @ts-expect-error data is not typed
                   ranks?.map((user, i) => (
-                    <TableRow key={user.uid}>
+                    <TableRow
+                      key={user.uid}
+                      className={i == 0 ? "bg-yellow-50" : ""}
+                    >
                       <TableCell className="pl-6 py-3">{`#${i + 1}`}</TableCell>
-                      <TableCell>{user.username}</TableCell>
+                      <TableCell>
+                        {i == 0 && "🏆"} {user.username}
+                      </TableCell>
                       <TableCell>{user.xp} XP</TableCell>
                     </TableRow>
                   ))
@@ -192,7 +197,7 @@ const Home = () => {
             </div>
           </div>
           <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-6 rounded-xl border-2 border-blue-700 bg-neutral-50 space-y-2 shadow-lg shadow-blue-700/30">
+            <div className="p-6 rounded-xl border-2 border-blue-700 bg-neutral-50 space-y-4 shadow-lg shadow-blue-700/30">
               <div className="flex gap-x-4 items-center">
                 <Book
                   className="w-8 h-8 p-2 bg-blue-50 fill-blue-400"
@@ -232,7 +237,7 @@ const Home = () => {
                 </li>
               </ul>
             </div>
-            <div className="p-6 rounded-xl border-2 space-y-2 border-yellow-700 shadow-lg shadow-yellow-700/30">
+            <div className="p-6 rounded-xl border-2 space-y-4 border-yellow-700 shadow-lg shadow-yellow-700/30">
               <div className="flex items-center gap-x-4">
                 <Sparkles className="p-2 bg-yellow-50 fill-yellow-500 w-8 h-8 rounded-md" />
                 <div className="-space-y-1">

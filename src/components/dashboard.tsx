@@ -44,13 +44,20 @@ export default function Dashboard() {
           {
             // @ts-expect-error data is not typed
             ranks?.map((user, i) => (
-              <TableRow key={user.uid}>
-                <TableCell className="pl-6 py-3">{`#${i + 1}`}</TableCell>
-                <TableCell>{user.username}</TableCell>
+              <TableRow key={user.uid} className={i == 0 ? "bg-yellow-50" : ""}>
+                <TableCell className="pl-6 py-3">#{i + 1}</TableCell>
+                <TableCell>
+                  {i == 0 && "🏆"} {user.username}
+                </TableCell>
                 <TableCell>{user.xp} XP</TableCell>
               </TableRow>
             ))
           }
+          {/* <TableRow>
+            <TableCell className="pl-6 py-3">{currentRank}</TableCell>
+            <TableCell>{user.username}</TableCell>
+            <TableCell>{user.xp} XP</TableCell>
+          </TableRow> */}
         </TableBody>
       </Table>
 
