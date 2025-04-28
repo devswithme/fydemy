@@ -16,16 +16,18 @@
   ],
   "screenshots": [
     {
-      "src": "/home/1.png",
-      "sizes": "1920x1920",
+      "src": "/screenshot/1.png",
+      "sizes": "720x1280",
       "type": "image/png",
-      "platform": "wide"
+      "platform": "narrow",
+      "description": "Monitor your progress, unlock achievements, and stay ahead."
     },
     {
-      "src": "/home/2.png",
-      "sizes": "1920x1920",
+      "src": "/screenshot/2.png",
+      "sizes": "720x1280",
       "type": "image/png",
-      "platform": "wide"
+      "platform": "narrow",
+      "description": "Boost your XP, ace quizzes, and race to the top of the leaderboard."
     }
   ]
 }

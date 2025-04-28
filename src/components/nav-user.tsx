@@ -74,7 +74,7 @@ const NavUser = ({
             >
               <Avatar
                 className={`h-6 w-6 ${
-                  user.isPremium && "ring-2 ring-blue-700 ring-offset-1"
+                  user.isPremium && "ring-2 ring-[#851BFF] ring-offset-1"
                 }`}
               >
                 <AvatarImage

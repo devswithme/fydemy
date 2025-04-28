@@ -28,7 +28,7 @@ export default function Dashboard() {
 
   return (
     <main className="max-w-3xl mx-auto prose">
-      <h2>Welcome, {authUser?.user?.name}!</h2>
+      <h2 className="tracking-tight">Welcome, {authUser?.user?.name}!</h2>
       <h4 className="!m-0 !p-0 leading-none">
         ✨ Our top-3 highest rank users
       </h4>

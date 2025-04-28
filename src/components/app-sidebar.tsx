@@ -66,8 +66,8 @@ export function AppSidebar() {
                   priority
                   src="/logo.svg"
                   alt="logo"
-                  width={90}
-                  height={90}
+                  width={110}
+                  height={110}
                 />
               </Link>
             </SidebarMenuButton>
