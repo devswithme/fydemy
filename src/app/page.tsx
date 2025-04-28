@@ -2,7 +2,7 @@ import Home from "@/components/home";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Fysite Academy",
+  title: "Fydemy",
   description: "Transform your curiosity into a knowledge",
 };
 

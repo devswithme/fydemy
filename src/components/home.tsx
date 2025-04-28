@@ -53,6 +53,8 @@ const Home = () => {
     fetchRanks();
   }, []);
 
+  if (!ranks) return;
+
   return (
     <>
       {/* <div className='fixed inset-0 h-full w-full bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] -z-20 [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_60%,transparent_100%)]' /> */}
@@ -70,13 +72,13 @@ const Home = () => {
       <nav className="fixed top-0 left-0 w-full backdrop-blur-lg z-20">
         <div className="max-w-4xl mx-auto py-6 px-8 lg:px-0 flex justify-between items-center">
           <Link href="/">
-            <Image src="/logo.svg" alt="logo" width={90} height={90} />
+            <Image src="/logo.svg" alt="logo" width={110} height={110} />
           </Link>
           <Link
             href="/login"
             className={buttonVariants({
               variant: "menu",
-              className: "!bg-blue-700 text-white border-black shadow-lg",
+              className: "!bg-[#851BFF] text-white border-black shadow-lg",
             })}
           >
             <LogIn /> Login
@@ -88,7 +90,7 @@ const Home = () => {
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl sm:text-5xl font-semibold tracking-tighter text-balance">
-                <span className="bg-gradient-to-tr from-blue-700 to-indigo-700 text-transparent bg-clip-text">
+                <span className="bg-gradient-to-tr from-[#851BFF] to-indigo-700 text-transparent bg-clip-text">
                   Transform*
                 </span>{" "}
                 your curiosity into a knowledge.
@@ -101,7 +103,7 @@ const Home = () => {
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5">
               <Button
                 variant="menu"
-                className="bg-blue-700 text-white border-black"
+                className="bg-[#851BFF] text-white border-black"
                 disabled
               >
                 <Frame />
@@ -133,7 +135,7 @@ const Home = () => {
               className={buttonVariants({
                 variant: "menu",
                 className:
-                  "absolute bottom-8 right-8 shadow-xl !bg-blue-700 text-white border-black -rotate-1",
+                  "absolute bottom-8 right-8 shadow-xl !bg-[#851BFF] text-white border-black -rotate-1",
               })}
             >
               Register Now <ArrowUpRight />
@@ -197,10 +199,10 @@ const Home = () => {
             </div>
           </div>
           <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-6 rounded-xl border-2 border-blue-700 bg-neutral-50 space-y-4 shadow-lg shadow-blue-700/30">
+            <div className="p-6 rounded-xl border-2 border-[#851BFF] bg-neutral-50 space-y-4 shadow-lg shadow-[#851BFF]/30">
               <div className="flex gap-x-4 items-center">
                 <Book
-                  className="w-8 h-8 p-2 bg-blue-50 fill-blue-400"
+                  className="w-8 h-8 p-2 bg-[#851BFF]/10 fill-[#851BFF]/50"
                   strokeWidth={3}
                 />
                 <div className="-space-y-1">
@@ -469,7 +471,7 @@ const Home = () => {
             </Accordion>
           </div>
         </section>
-        <footer className="bg-blue-700 rounded-xl border-2 w-full h-fit p-8 sm:p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 border-black text-white">
+        <footer className="bg-[#851BFF] rounded-xl border-2 w-full h-fit p-8 sm:p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 border-black text-white">
           <div className="space-y-2">
             <Link href="/">
               <Image src="/logo_dark.svg" alt="logo" width={90} height={90} />
