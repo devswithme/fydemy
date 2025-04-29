@@ -1,7 +1,7 @@
 {
   "name": "Fydemy",
   "short_name": "Fydemy",
-  "description": "Transform your curiosity into a knowledge",
+  "description": "A web development academy platform empowering the next generation of digital innovators.",
   "categories": ["education", "productivity"],
   "start_url": "/",
   "display": "standalone",

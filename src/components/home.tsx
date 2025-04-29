@@ -91,7 +91,7 @@ const Home = () => {
                 <span className="bg-gradient-to-tr from-[#851BFF] to-indigo-700 text-transparent bg-clip-text">
                   Transform*
                 </span>{" "}
-                your curiosity into a knowledge.
+                your curiosity into knowledge.
               </h1>
               <p className="text-sm sm:text-base max-w-md text-muted-foreground">
                 Learn these topics in just one month with our comprehensive and
