@@ -40,45 +40,52 @@ export default function Dashboard() {
       <h2 className="text-xl font-semibold">
         Welcome, {authUser?.user?.name}!
       </h2>
-      <h4 className="font-medium">🕑 Your submission history</h4>
-      <div className="border rounded-lg overflow-hidden">
-        <Table>
-          <TableHeader className="text-xs sm:text-sm">
-            <TableRow className="bg-muted">
-              <TableHead className="pl-6">Category</TableHead>
-              <TableHead>URL</TableHead>
-              <TableHead className="pr-6">Status</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody className="text-xs sm:text-sm">
-            {subs?.map(
-              (sub: { category: string; url: string; status: number }, i) => (
-                <TableRow key={i}>
-                  <TableCell className="pl-6 py-3">
-                    {getCategoryCode(sub.category)}
-                  </TableCell>
-                  <TableCell>{sub.url}</TableCell>
-                  <TableCell className="pr-6">
-                    <span
-                      className={`text-xs px-1 py-0.5 rounded font-medium ${
-                        sub.status == 0
-                          ? "bg-orange-50 text-orange-600 border border-orange-100"
-                          : sub.status == 1
-                          ? "bg-green-50 text-green-600 border border-green-100"
-                          : sub.status == 2
-                          ? "bg-red-50 text-red-600 border border-red-100"
-                          : ""
-                      }`}
-                    >
-                      {getStatusCode(sub.status.toString())}
-                    </span>
-                  </TableCell>
+      {subs.length > 0 && (
+        <>
+          <h4 className="font-medium">🕑 Your submission history</h4>
+          <div className="border rounded-lg overflow-hidden">
+            <Table>
+              <TableHeader className="text-xs sm:text-sm">
+                <TableRow className="bg-muted">
+                  <TableHead className="pl-6">Category</TableHead>
+                  <TableHead>URL</TableHead>
+                  <TableHead className="pr-6">Status</TableHead>
                 </TableRow>
-              )
-            )}
-          </TableBody>
-        </Table>
-      </div>
+              </TableHeader>
+              <TableBody className="text-xs sm:text-sm">
+                {subs?.map(
+                  (
+                    sub: { category: string; url: string; status: number },
+                    i
+                  ) => (
+                    <TableRow key={i}>
+                      <TableCell className="pl-6 py-3">
+                        {getCategoryCode(sub.category)}
+                      </TableCell>
+                      <TableCell>{sub.url}</TableCell>
+                      <TableCell className="pr-6">
+                        <span
+                          className={`text-xs px-1 py-0.5 rounded font-medium ${
+                            sub.status == 0
+                              ? "bg-orange-50 text-orange-600 border border-orange-100"
+                              : sub.status == 1
+                              ? "bg-green-50 text-green-600 border border-green-100"
+                              : sub.status == 2
+                              ? "bg-red-50 text-red-600 border border-red-100"
+                              : ""
+                          }`}
+                        >
+                          {getStatusCode(sub.status.toString())}
+                        </span>
+                      </TableCell>
+                    </TableRow>
+                  )
+                )}
+              </TableBody>
+            </Table>
+          </div>
+        </>
+      )}
       <h4 className="font-medium">✨ Our top-3 highest rank users</h4>
       <div className="border rounded-lg overflow-hidden">
         <Table>
@@ -137,7 +144,7 @@ export default function Dashboard() {
       </ul> */}
 
       <h4 className="font-medium">📖 Available courses</h4>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {navItems.map((item) => (
           <div
             key={item.name}

@@ -66,7 +66,7 @@ const Submission = ({ id }: { id: string }) => {
             value={url}
             onChange={(e) => setUrl(e.target.value)}
           />
-          <DialogFooter>
+          <DialogFooter className="gap-y-2">
             <DialogClose asChild>
               <Button variant="outline">Back</Button>
             </DialogClose>

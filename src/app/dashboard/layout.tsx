@@ -28,13 +28,26 @@ export default function RootLayout({
           <AppSidebar />
           <nav className="md:hidden fixed top-0 flex justify-between items-center w-full px-8 py-6 backdrop-blur-md z-50">
             <Link href="/">
-              <Image src="/logo.svg" alt="logo" width={110} height={110} />
+              <Image
+                src="/logo.svg"
+                alt="logo"
+                width={110}
+                height={110}
+                className="dark:hidden block"
+              />
+              <Image
+                src="/logo_dark.svg"
+                alt="logo_dark"
+                width={110}
+                height={110}
+                className="dark:block hidden"
+              />
             </Link>
             <SidebarTrigger />
           </nav>
 
           <HighlightProvider>
-            <main className="flex-1 overflow-auto px-8 py-24 max-w-3xl mx-auto prose dark:prose-invert">
+            <main className="flex-1 overflow-auto px-8 py-32 max-w-3xl mx-auto prose prose-sm sm:prose-base dark:prose-invert">
               {children}
             </main>
           </HighlightProvider>
