@@ -1,15 +1,15 @@
-import { navItems } from '@/constants/constant';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { Metadata } from 'next';
-import Link from 'next/link';
+import { navItems } from "@/constants/constant";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Metadata } from "next";
+import Link from "next/link";
 export const metadata: Metadata = {
-  title: 'Fullstack API',
-  description: 'API (Application Programming Interface) itu kayak restoran! 🍽️',
+  title: "Fullstack API",
+  description: "API (Application Programming Interface) itu kayak restoran! 🍽️",
 };
 
 export default function ApiReference() {
   return (
-    <main className='max-w-3xl mx-auto prose'>
+    <>
       <h1>🌐 Apa Itu API?</h1>
       <p>API (Application Programming Interface) itu kayak restoran! 🍽️</p>
       <ul>
@@ -19,20 +19,21 @@ export default function ApiReference() {
         <li>Data JSON = makanan yang dikirim ke pelanggan</li>
       </ul>
       <p>
-        Jadi, API itu jembatan yang memungkinkan aplikasi kita mengambil atau mengirim data dari dan
-        ke server.
+        Jadi, API itu jembatan yang memungkinkan aplikasi kita mengambil atau
+        mengirim data dari dan ke server.
       </p>
       <p>
-        Berikut materi tentang Mengambil Data dari API dengan Axios (GET) di React menggunakan{' '}
-        <a href='https://jsonplaceholder.typicode.com/posts'>
+        Berikut materi tentang Mengambil Data dari API dengan Axios (GET) di
+        React menggunakan{" "}
+        <a href="https://jsonplaceholder.typicode.com/posts">
           https://jsonplaceholder.typicode.com/posts
         </a>
         ! 🚀
       </p>
       <h2>🔧 Apa Itu Axios?</h2>
       <p>
-        Axios adalah library di JavaScript buat mengambil data dari API dengan lebih mudah.
-        Dibanding fetch(), Axios lebih simpel karena:
+        Axios adalah library di JavaScript buat mengambil data dari API dengan
+        lebih mudah. Dibanding fetch(), Axios lebih simpel karena:
       </p>
       <ul>
         <li>✅ Sudah otomatis mengubah response ke JSON</li>
@@ -42,7 +43,7 @@ export default function ApiReference() {
       <h3>📥 Cara Menggunakan Axios untuk GET Data dari API</h3>
       <p>
         Sekarang, kita mau ambil data dari API
-        <a href='https://jsonplaceholder.typicode.com/posts'>
+        <a href="https://jsonplaceholder.typicode.com/posts">
           https://jsonplaceholder.typicode.com/posts
         </a>
         , yang berisi daftar postingan.
@@ -51,12 +52,12 @@ export default function ApiReference() {
         <li>
           1️⃣ Install Axios dulu (jika belum)
           <pre>
-            <code className='language-js'>{`npm install axios`}</code>
+            <code className="language-js">{`npm install axios`}</code>
           </pre>
         </li>
         <li>2️⃣ Gunakan Axios di React</li>
         <pre>
-          <code className='language-js'>{`import React, {useState, useEffect} from "react";
+          <code className="language-js">{`import React, {useState, useEffect} from "react";
 import axios from "axios";
 
 function PostList(){
@@ -102,15 +103,16 @@ export defalt PostList;`}</code>
         </p>
         <ul>
           <li>
-            ✅ Kita pakai <code className='language-js'>useState</code> buat menyimpan data API.
+            ✅ Kita pakai <code className="language-js">useState</code> buat
+            menyimpan data API.
           </li>
           <li>
-            ✅ Kita pakai <code className='language-js'>useEffect</code> supaya data API diambil
-            saat komponen pertama kali muncul.
+            ✅ Kita pakai <code className="language-js">useEffect</code> supaya
+            data API diambil saat komponen pertama kali muncul.
           </li>
           <li>
-            ✅ <code className='language-js'>axios.get()</code> digunakan untuk mengambil data dari
-            API.
+            ✅ <code className="language-js">axios.get()</code> digunakan untuk
+            mengambil data dari API.
           </li>
           <li>
             ✅ Jika <b>loading</b> masih berjalan, tampilkan teks Loading....
@@ -124,7 +126,7 @@ export defalt PostList;`}</code>
         </ul>
         <p>🔥 Apa yang Akan Ditampilkan?</p>
         <pre>
-          <code className='language-js'>{`📜 Daftar Postingan
+          <code className="language-js">{`📜 Daftar Postingan
 - Sunt aut facere repellat provident occaecati excepturi optio reprehenderit
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 - Qui est esse
@@ -135,30 +137,31 @@ export defalt PostList;`}</code>
       <h3>🚀 Kesimpulan</h3>
       <ul>
         <li>
-          ✅ <code className='language-js'>axios</code> mempermudah pengambilan data dari API.
+          ✅ <code className="language-js">axios</code> mempermudah pengambilan
+          data dari API.
         </li>
         <li>
-          ✅ <code className='language-js'>useEffect</code> dipakai supaya API hanya dipanggil
-          sekali saat halaman pertama kali muncul.
+          ✅ <code className="language-js">useEffect</code> dipakai supaya API
+          hanya dipanggil sekali saat halaman pertama kali muncul.
         </li>
         <li>
-          ✅ <code className='language-js'>useState</code> menyimpan data dari API ke dalam state
-          agar bisa ditampilkan di UI.
+          ✅ <code className="language-js">useState</code> menyimpan data dari
+          API ke dalam state agar bisa ditampilkan di UI.
         </li>
       </ul>
       <p>Selamat mencoba! 🎉</p>
 
-      <div className='bg-white w-full border-t fixed right-0 md:pl-64 bottom-0 py-5'>
-        <div className='flex justify-between items-center max-w-3xl mx-auto px-5 lg:px-0'>
-          <Link href={navItems[3].items[9].url} className='invisible'>
-            <ChevronLeft />
+      <div className="bg-muted w-full border-t fixed right-0 md:pl-64 bottom-0 py-4">
+        <div className="flex justify-between items-center max-w-3xl mx-auto px-5 lg:px-0">
+          <Link href={navItems[3].items[9].url} className="invisible">
+            <ChevronLeft className="w-5 h-5" />
           </Link>
-          <span className='font-semibold'>{navItems[3].items[8].title}</span>
+          <span className="font-semibold">{navItems[3].items[8].title}</span>
           <Link href={navItems[3].items[9].url}>
-            <ChevronRight />
+            <ChevronRight className="w-5 h-5" />
           </Link>
         </div>
       </div>
-    </main>
+    </>
   );
 }

@@ -2,8 +2,9 @@ import Dashboard from "@/components/dashboard";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Home",
-  description: "Halo, selamat datang! Terima kasih sudah membeli modul ini.",
+  title: "Dashboard",
+  description:
+    "A web development academy platform empowering the next generation of digital innovators.",
 };
 
 export default async function Page() {

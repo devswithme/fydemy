@@ -14,158 +14,166 @@ import {
   Wand,
   Waypoints,
   Workflow,
-} from 'lucide-react';
+} from "lucide-react";
 
 export const navItems = [
   {
-    name: 'UI/UX Design',
+    name: "UI/UX Design",
+    level: "Beginner",
+    duration: 20,
     items: [
       {
-        title: 'Warm up',
-        url: '/dashboard/uiux/warm-up',
+        title: "Warm up",
+        url: "/dashboard/uiux/warm-up",
         icon: LogIn,
       },
       {
-        title: 'Introduction',
-        url: '/dashboard/uiux/introduction',
+        title: "Introduction",
+        url: "/dashboard/uiux/introduction",
         icon: Frame,
       },
       {
-        title: 'Frontend',
-        url: '/dashboard/uiux/frontend',
+        title: "Frontend",
+        url: "/dashboard/uiux/frontend",
         icon: Code2,
       },
       {
-        title: 'Quiz',
-        url: '/dashboard/uiux/quiz',
+        title: "Quiz",
+        url: "/dashboard/uiux/quiz",
         icon: FileQuestion,
       },
       {
-        title: 'Projects',
-        url: '/dashboard/uiux/projects',
+        title: "Projects",
+        url: "/dashboard/uiux/projects",
         icon: Workflow,
       },
     ],
   },
   {
-    name: 'Front-End',
+    name: "Front-End",
+    level: "Beginner",
+    duration: 60,
     premium: true,
     items: [
       {
-        title: 'Introduction',
-        url: '/dashboard/frontend/introduction',
+        title: "Introduction",
+        url: "/dashboard/frontend/introduction",
         icon: Frame,
       },
       {
-        title: 'Syntax',
-        url: '/dashboard/frontend/syntax',
+        title: "Syntax",
+        url: "/dashboard/frontend/syntax",
         icon: SquareTerminal,
       },
       {
-        title: 'Quiz',
-        url: '/dashboard/frontend/quiz',
+        title: "Quiz",
+        url: "/dashboard/frontend/quiz",
         icon: FileQuestion,
       },
       {
-        title: 'Projects',
-        url: '/dashboard/frontend/projects',
+        title: "Projects",
+        url: "/dashboard/frontend/projects",
         icon: Workflow,
       },
     ],
   },
   {
-    name: 'Back-End',
+    name: "Back-End",
+    level: "Beginner",
+    duration: 120,
     premium: true,
     items: [
       {
-        title: 'Introduction',
-        url: '/dashboard/backend/introduction',
+        title: "Introduction",
+        url: "/dashboard/backend/introduction",
         icon: Frame,
       },
       {
-        title: 'Syntax',
-        url: '/dashboard/backend/syntax',
+        title: "Syntax",
+        url: "/dashboard/backend/syntax",
         icon: SquareTerminal,
       },
       {
-        title: 'Implementation',
-        url: '/dashboard/backend/implementation',
+        title: "Implementation",
+        url: "/dashboard/backend/implementation",
         icon: FastForward,
       },
       {
-        title: 'Quiz',
-        url: '/dashboard/backend/quiz',
+        title: "Quiz",
+        url: "/dashboard/backend/quiz",
         icon: FileQuestion,
       },
       {
-        title: 'Projects',
-        url: '/dashboard/backend/projects',
+        title: "Projects",
+        url: "/dashboard/backend/projects",
         icon: Workflow,
       },
     ],
   },
   {
-    name: 'Full-Stack',
+    name: "Full-Stack",
+    level: "Intermediate",
+    duration: 240,
     premium: true,
     items: [
       {
-        title: 'React.js',
-        url: '/dashboard/fullstack/reactjs',
+        title: "React.js",
+        url: "/dashboard/fullstack/reactjs",
         icon: Atom,
       },
       {
-        title: 'Instalasi',
-        url: '/dashboard/fullstack/instalasi',
+        title: "Instalasi",
+        url: "/dashboard/fullstack/instalasi",
         icon: Download,
       },
       {
-        title: 'Hello World',
-        url: '/dashboard/fullstack/hello-world',
+        title: "Hello World",
+        url: "/dashboard/fullstack/hello-world",
         icon: Printer,
       },
       {
-        title: 'Components',
-        url: '/dashboard/fullstack/components',
+        title: "Components",
+        url: "/dashboard/fullstack/components",
         icon: Box,
       },
       {
-        title: 'Props',
-        url: '/dashboard/fullstack/props',
+        title: "Props",
+        url: "/dashboard/fullstack/props",
         icon: Forward,
       },
       {
-        title: 'Props Quiz',
-        url: '/dashboard/fullstack/quiz-props',
+        title: "Props Quiz",
+        url: "/dashboard/fullstack/quiz-props",
         icon: FileQuestion,
       },
       {
-        title: 'Hooks',
-        url: '/dashboard/fullstack/hooks',
+        title: "Hooks",
+        url: "/dashboard/fullstack/hooks",
         icon: Wand,
       },
       {
-        title: 'Hooks Quiz',
-        url: '/dashboard/fullstack/quiz-hooks',
+        title: "Hooks Quiz",
+        url: "/dashboard/fullstack/quiz-hooks",
         icon: FileQuestion,
       },
       {
-        title: 'API',
-        url: '/dashboard/fullstack/api',
+        title: "API",
+        url: "/dashboard/fullstack/api",
         icon: Waypoints,
       },
       {
-        title: 'API Quiz',
-        url: '/dashboard/fullstack/quiz-api',
+        title: "API Quiz",
+        url: "/dashboard/fullstack/quiz-api",
         icon: FileQuestion,
       },
       {
-        title: 'TVMaze',
-        url: '/dashboard/fullstack/projects',
+        title: "TVMaze",
+        url: "/dashboard/fullstack/projects",
         icon: Workflow,
       },
       {
-        title: 'Deploy',
-        url: '/dashboard/fullstack/deploy',
+        title: "Deploy",
+        url: "/dashboard/fullstack/deploy",
         icon: Rocket,
       },
     ],
@@ -174,182 +182,184 @@ export const navItems = [
 
 export const quizItems = [
   {
-    name: '/dashboard/uiux/quiz',
+    name: "/dashboard/uiux/quiz",
     items: [
       {
-        id: 'one',
-        question: '1. Manakah yang merupakan tanggung jawab seorang UI?',
+        id: "one",
+        question: "1. Manakah yang merupakan tanggung jawab seorang UI?",
         answers: [
           {
-            value: 'a',
-            text: 'Membuat user persona dan user flow dalam produk',
+            value: "a",
+            text: "Membuat user persona dan user flow dalam produk",
           },
           {
-            value: 'b',
-            text: 'Mengatur dan membuat desain visual/tampilan produk semenarik mungkin',
+            value: "b",
+            text: "Mengatur dan membuat desain visual/tampilan produk semenarik mungkin",
           },
           {
-            value: 'c',
-            text: 'Mengubah produk sesuai harga pasar',
+            value: "c",
+            text: "Mengubah produk sesuai harga pasar",
           },
         ],
-        img: '',
-        code: '',
+        img: "",
+        code: "",
         point: 5,
       },
       {
-        id: 'two',
-        question: '	2. Berikut ini merupakan proses dari UI/UX, Yaitu?',
+        id: "two",
+        question: "	2. Berikut ini merupakan proses dari UI/UX, Yaitu?",
         answers: [
           {
-            value: 'a',
-            text: 'User Persona',
+            value: "a",
+            text: "User Persona",
           },
           {
-            value: 'b',
-            text: 'User Journey MAP',
+            value: "b",
+            text: "User Journey MAP",
           },
           {
-            value: 'c',
-            text: 'Storyboarding',
+            value: "c",
+            text: "Storyboarding",
           },
         ],
-        img: '/uiux/1.png',
-        code: '',
+        img: "/uiux/1.png",
+        code: "",
         point: 5,
       },
       {
-        id: 'three',
+        id: "three",
         question:
-          '3. Siapa yang bertugas merancang proses interaksi dan pengalaman bagi pengguna pada sebuah produk (aplikasi & website)?',
+          "3. Siapa yang bertugas merancang proses interaksi dan pengalaman bagi pengguna pada sebuah produk (aplikasi & website)?",
         answers: [
           {
-            value: 'a',
-            text: 'User Interface',
+            value: "a",
+            text: "User Interface",
           },
           {
-            value: 'b',
-            text: 'User Experience',
+            value: "b",
+            text: "User Experience",
           },
           {
-            value: 'c',
-            text: 'UI/UX',
+            value: "c",
+            text: "UI/UX",
           },
         ],
-        img: '',
-        code: '',
+        img: "",
+        code: "",
         point: 5,
       },
       {
-        id: 'four',
+        id: "four",
         question:
-          '4. Siapa yang bertugas membangun rancangan Interface aplikasi/web untuk bisa digunakan oleh user?',
+          "4. Siapa yang bertugas membangun rancangan Interface aplikasi/web untuk bisa digunakan oleh user?",
         answers: [
           {
-            value: 'a',
-            text: 'Frontend Developer',
+            value: "a",
+            text: "Frontend Developer",
           },
           {
-            value: 'b',
-            text: 'Backend Developer',
+            value: "b",
+            text: "Backend Developer",
           },
           {
-            value: 'c',
-            text: 'UX Engineer',
+            value: "c",
+            text: "UX Engineer",
           },
         ],
-        img: '',
-        code: '',
+        img: "",
+        code: "",
         point: 5,
       },
       {
-        id: 'five',
-        question: '5. Untuk mengatur struktur halaman web berupa text menggunakan dan gambar?',
+        id: "five",
+        question:
+          "5. Untuk mengatur struktur halaman web berupa text menggunakan dan gambar?",
         answers: [
           {
-            value: 'a',
-            text: 'CSS',
+            value: "a",
+            text: "CSS",
           },
           {
-            value: 'b',
-            text: 'Figma',
+            value: "b",
+            text: "Figma",
           },
           {
-            value: 'c',
-            text: 'HTML',
+            value: "c",
+            text: "HTML",
           },
         ],
-        img: '',
-        code: '',
+        img: "",
+        code: "",
         point: 5,
       },
     ],
   },
   {
-    name: '/dashboard/frontend/quiz',
+    name: "/dashboard/frontend/quiz",
     items: [
       {
-        id: 'one',
-        question: '1. Apa 3 elemen utama dalam pembuatan website sederhana?',
+        id: "one",
+        question: "1. Apa 3 elemen utama dalam pembuatan website sederhana?",
         answers: [
           {
-            value: 'a',
-            text: 'HTML, CSS, Javascript',
+            value: "a",
+            text: "HTML, CSS, Javascript",
           },
           {
-            value: 'b',
-            text: 'HTML, CSS, Java',
+            value: "b",
+            text: "HTML, CSS, Java",
           },
           {
-            value: 'c',
-            text: 'HTMX, CSS, Javascript',
+            value: "c",
+            text: "HTMX, CSS, Javascript",
           },
         ],
-        img: '',
-        code: '',
+        img: "",
+        code: "",
         point: 5,
       },
       {
-        id: 'two',
-        question: '2. Perhatikan kode berikut ini, apa output yang akan tampil?',
+        id: "two",
+        question:
+          "2. Perhatikan kode berikut ini, apa output yang akan tampil?",
         answers: [
           {
-            value: 'a',
-            text: 'Budi',
+            value: "a",
+            text: "Budi",
           },
           {
-            value: 'b',
-            text: 'Yanto',
+            value: "b",
+            text: "Yanto",
           },
           {
-            value: 'c',
-            text: 'Error',
+            value: "c",
+            text: "Error",
           },
         ],
-        img: '',
+        img: "",
         code: `let nama = 'Budi' 
 nama = 'Yanto'
 console.log(nama)`,
         point: 10,
       },
       {
-        id: 'three',
-        question: '3. Coba tebak output dari program ini!',
+        id: "three",
+        question: "3. Coba tebak output dari program ini!",
         answers: [
           {
-            value: 'a',
-            text: 'selamat',
+            value: "a",
+            text: "selamat",
           },
           {
-            value: 'b',
-            text: 'semoga dapat jodoh',
+            value: "b",
+            text: "semoga dapat jodoh",
           },
           {
-            value: 'c',
-            text: 'sabar ya',
+            value: "c",
+            text: "sabar ya",
           },
         ],
-        img: '',
+        img: "",
         code: `const menikah = false
 const umur = 28
 
@@ -363,23 +373,23 @@ if (menikah) {
         point: 10,
       },
       {
-        id: 'four',
-        question: '4. Kenapa program ini salah?',
+        id: "four",
+        question: "4. Kenapa program ini salah?",
         answers: [
           {
-            value: 'a',
-            text: 'Tipe data parameter tidak sesuai',
+            value: "a",
+            text: "Tipe data parameter tidak sesuai",
           },
           {
-            value: 'b',
-            text: 'Jumlah parameter diluar yang sudah didefinisikan',
+            value: "b",
+            text: "Jumlah parameter diluar yang sudah didefinisikan",
           },
           {
-            value: 'c',
-            text: 'Kegunaan fungsi tidak cocok',
+            value: "c",
+            text: "Kegunaan fungsi tidak cocok",
           },
         ],
-        img: '',
+        img: "",
         code: `function add(a, b) {
   return a + b
 }
@@ -387,106 +397,108 @@ console.log(add(3, 4, 5))`,
         point: 10,
       },
       {
-        id: 'five',
-        question: '5. Apakah javascript bisa digunakan diluar lingkungan browser?',
+        id: "five",
+        question:
+          "5. Apakah javascript bisa digunakan diluar lingkungan browser?",
         answers: [
           {
-            value: 'a',
-            text: 'Bisa',
+            value: "a",
+            text: "Bisa",
           },
           {
-            value: 'b',
-            text: 'Ngga bisa',
+            value: "b",
+            text: "Ngga bisa",
           },
           {
-            value: 'c',
-            text: 'Tidak keduanya',
+            value: "c",
+            text: "Tidak keduanya",
           },
         ],
-        img: '',
-        code: '',
+        img: "",
+        code: "",
         point: 5,
       },
     ],
   },
   {
-    name: '/dashboard/backend/quiz',
+    name: "/dashboard/backend/quiz",
     items: [
       {
-        id: 'one',
-        question: '1. Apa method API yang cocok untuk return atau retrieve satu atau lebih data?',
+        id: "one",
+        question:
+          "1. Apa method API yang cocok untuk return atau retrieve satu atau lebih data?",
         answers: [
           {
-            value: 'a',
-            text: 'GET',
+            value: "a",
+            text: "GET",
           },
           {
-            value: 'b',
-            text: 'PUT',
+            value: "b",
+            text: "PUT",
           },
           {
-            value: 'c',
-            text: 'PATCH',
+            value: "c",
+            text: "PATCH",
           },
         ],
-        img: '',
-        code: '',
+        img: "",
+        code: "",
         point: 5,
       },
       {
-        id: 'two',
+        id: "two",
         question: (
-          <div className='flex-1'>
-            2. Apa kegunaan memakai library <code className='language-js'>Prisma</code> dibanding
-            yang lain?{' '}
+          <div className="flex-1">
+            2. Apa kegunaan memakai library{" "}
+            <code className="language-js">Prisma</code> dibanding yang lain?{" "}
           </div>
         ),
         answers: [
           {
-            value: 'a',
-            text: 'Aman dari SQL Injection, karena tidak langsung menulis query terang-terangan dalam kode alias sudah di handle oleh ORM libary.',
+            value: "a",
+            text: "Aman dari SQL Injection, karena tidak langsung menulis query terang-terangan dalam kode alias sudah di handle oleh ORM libary.",
           },
           {
-            value: 'b',
-            text: 'Lebih simple pemakaiannya dalam query yang sangat kompleks',
+            value: "b",
+            text: "Lebih simple pemakaiannya dalam query yang sangat kompleks",
           },
           {
-            value: 'c',
+            value: "c",
             text: (
               <p>
-                Sama saja, tidak ada kegunaan spesial dari libary{' '}
-                <code className='language-js'>Prisma</code> ini
+                Sama saja, tidak ada kegunaan spesial dari libary{" "}
+                <code className="language-js">Prisma</code> ini
               </p>
             ),
           },
         ],
-        img: '',
-        code: '',
+        img: "",
+        code: "",
         point: 5,
       },
       {
-        id: 'three',
+        id: "three",
         question: (
-          <div className='flex-1'>
-            3. <code className='language-js'>req.body</code> mendapat nilai <b>nama</b> dan{' '}
-            <b>peminjam</b> dari mana?
+          <div className="flex-1">
+            3. <code className="language-js">req.body</code> mendapat nilai{" "}
+            <b>nama</b> dan <b>peminjam</b> dari mana?
           </div>
         ),
         answers: [
           {
-            value: 'a',
-            text: 'Dari request url parameter yang kemudian ditangkap ke dalam nilai variabel tersebut',
+            value: "a",
+            text: "Dari request url parameter yang kemudian ditangkap ke dalam nilai variabel tersebut",
           },
           {
-            value: 'b',
-            text: 'Dari nilai cookies yang di send oleh client melalui API',
+            value: "b",
+            text: "Dari nilai cookies yang di send oleh client melalui API",
           },
           {
-            value: 'c',
-            text: 'Dari request isi API yang bisa dalam bentuk format JSON atau yang lainnya',
+            value: "c",
+            text: "Dari request isi API yang bisa dalam bentuk format JSON atau yang lainnya",
           },
         ],
-        img: '',
+        img: "",
         code: `app.post('/books', async (req, res) => {
 	const { nama, peminjam } = req.body
 	...
@@ -494,166 +506,171 @@ console.log(add(3, 4, 5))`,
         point: 10,
       },
       {
-        id: 'four',
+        id: "four",
         question: (
-          <div className='flex-1'>
-            4. Kenapa penulis menyarankan untuk menggunakan libary{' '}
-            <code className='language-js'>nodemon</code> dari pada{' '}
-            <code className='language-js'>node [nama file]</code> dalam fase development?
+          <div className="flex-1">
+            4. Kenapa penulis menyarankan untuk menggunakan libary{" "}
+            <code className="language-js">nodemon</code> dari pada{" "}
+            <code className="language-js">node [nama file]</code> dalam fase
+            development?
           </div>
         ),
         answers: [
           {
-            value: 'a',
+            value: "a",
             text: (
               <p>
-                <code className='language-js'>nodemon</code> memudahkan untuk debug program karena
-                dapat mengetahui error-error
+                <code className="language-js">nodemon</code> memudahkan untuk
+                debug program karena dapat mengetahui error-error
               </p>
             ),
           },
           {
-            value: 'b',
+            value: "b",
             text: (
               <p>
-                <code className='language-js'>nodemon</code> memudahkan dalam <b>auto-save</b>{' '}
-                setiap kali ada perubahan dalam kode
+                <code className="language-js">nodemon</code> memudahkan dalam{" "}
+                <b>auto-save</b> setiap kali ada perubahan dalam kode
               </p>
             ),
           },
           {
-            value: 'c',
+            value: "c",
             text: (
               <p>
-                <code className='language-js'>node [nama file]</code>
-                memudahkan dalam <b>auto-save</b> setiap kali ada perubahan dalam kode
+                <code className="language-js">node [nama file]</code>
+                memudahkan dalam <b>auto-save</b> setiap kali ada perubahan
+                dalam kode
               </p>
             ),
           },
         ],
-        img: '',
+        img: "",
         code: ``,
         point: 5,
       },
       {
-        id: 'five',
+        id: "five",
         question: (
-          <div className='flex-1'>
-            5. Kenapa kita harus menyimpan nilai variabel penting ke dalam file{' '}
-            <code className='language-js'>.env</code>?
+          <div className="flex-1">
+            5. Kenapa kita harus menyimpan nilai variabel penting ke dalam file{" "}
+            <code className="language-js">.env</code>?
           </div>
         ),
         answers: [
           {
-            value: 'a',
+            value: "a",
             text: (
               <p>
-                <code className='language-js'>.env</code> memudahkan kita untuk mengelola
-                variabel-variabel yang bisa dipakai kembali
+                <code className="language-js">.env</code> memudahkan kita untuk
+                mengelola variabel-variabel yang bisa dipakai kembali
               </p>
             ),
           },
           {
-            value: 'b',
+            value: "b",
             text: (
               <p>
-                <code className='language-js'>.env</code> akan disimpan di server alih-alih pada
-                kodenya langsung jadi lebih aman
+                <code className="language-js">.env</code> akan disimpan di
+                server alih-alih pada kodenya langsung jadi lebih aman
               </p>
             ),
           },
           {
-            value: 'c',
+            value: "c",
             text: (
               <p>
-                <code className='language-js'>.env</code> membuat aplikasi teratur dengan penempatan
-                nilai-nilai pada satu file
+                <code className="language-js">.env</code> membuat aplikasi
+                teratur dengan penempatan nilai-nilai pada satu file
               </p>
             ),
           },
         ],
-        img: '',
-        code: '',
+        img: "",
+        code: "",
         point: 5,
       },
     ],
   },
   {
-    name: '/dashboard/fullstack/quiz-props',
+    name: "/dashboard/fullstack/quiz-props",
     items: [
       {
-        id: 'one',
-        question: '1. Apa itu props di React?',
+        id: "one",
+        question: "1. Apa itu props di React?",
         answers: [
           {
-            value: 'a',
-            text: 'Sebuah fungsi yang mengubah state',
+            value: "a",
+            text: "Sebuah fungsi yang mengubah state",
           },
           {
-            value: 'b',
-            text: 'Paket data yang dikirim dari komponen induk ke komponen anak',
+            value: "b",
+            text: "Paket data yang dikirim dari komponen induk ke komponen anak",
           },
           {
-            value: 'c',
-            text: 'Sebuah variabel global yang bisa diubah sesuka hati',
+            value: "c",
+            text: "Sebuah variabel global yang bisa diubah sesuka hati",
           },
         ],
-        img: '',
-        code: '',
+        img: "",
+        code: "",
         point: 5,
       },
       {
-        id: 'two',
-        question: '2. Bagaimana cara mengirim props ke komponen anak?',
+        id: "two",
+        question: "2. Bagaimana cara mengirim props ke komponen anak?",
         answers: [
           {
-            value: 'a',
+            value: "a",
             text: (
               <p>
-                Dengan menggunakan <code className='language-js'>setProps()</code>
+                Dengan menggunakan{" "}
+                <code className="language-js">setProps()</code>
               </p>
             ),
           },
           {
-            value: 'b',
-            text: 'Dengan memberikan atribut saat memanggil komponen anak',
+            value: "b",
+            text: "Dengan memberikan atribut saat memanggil komponen anak",
           },
           {
-            value: 'c',
+            value: "c",
             text: (
               <p>
-                Dengan menulis <code className='language-js'>{`props.nama = "Budi"`}</code> langsung
-                di dalam komponen anak
+                Dengan menulis{" "}
+                <code className="language-js">{`props.nama = "Budi"`}</code>{" "}
+                langsung di dalam komponen anak
               </p>
             ),
           },
         ],
-        img: '',
-        code: '',
+        img: "",
+        code: "",
         point: 5,
       },
       {
-        id: 'three',
-        question: '3. Apa yang akan ditampilkan oleh kode ini?',
+        id: "three",
+        question: "3. Apa yang akan ditampilkan oleh kode ini?",
         answers: [
           {
-            value: 'a',
-            text: 'Halo, Dino! 👋',
+            value: "a",
+            text: "Halo, Dino! 👋",
           },
           {
-            value: 'b',
-            text: 'Halo, props.nama! 👋',
+            value: "b",
+            text: "Halo, props.nama! 👋",
           },
           {
-            value: 'c',
+            value: "c",
             text: (
               <p>
-                Error karena <code className='language-js'>props</code> belum dideklarasikan
+                Error karena <code className="language-js">props</code> belum
+                dideklarasikan
               </p>
             ),
           },
         ],
-        img: '',
+        img: "",
         code: `funtion Halo(props){
     return <h1>Halo, {props.nama}! 👋</h1>;
 }
@@ -665,23 +682,23 @@ function App(){
         point: 10,
       },
       {
-        id: 'four',
-        question: '4. Props bisa berupa apa saja?',
+        id: "four",
+        question: "4. Props bisa berupa apa saja?",
         answers: [
           {
-            value: 'a',
-            text: 'Hanya teks dan angka',
+            value: "a",
+            text: "Hanya teks dan angka",
           },
           {
-            value: 'b',
-            text: 'Hanya objek dan array',
+            value: "b",
+            text: "Hanya objek dan array",
           },
           {
-            value: 'c',
-            text: 'Teks, angka, objek, fungsi, bahkan komponen lain!',
+            value: "c",
+            text: "Teks, angka, objek, fungsi, bahkan komponen lain!",
           },
         ],
-        img: '',
+        img: "",
         code: `function add(a, b) {
 	return a + b
 }
@@ -689,103 +706,104 @@ console.log(add(3, 4, 5))`,
         point: 10,
       },
       {
-        id: 'five',
-        question: '5. Kenapa props tidak boleh diubah oleh komponen anak?',
+        id: "five",
+        question: "5. Kenapa props tidak boleh diubah oleh komponen anak?",
         answers: [
           {
-            value: 'a',
-            text: 'Karena React malas memperbarui UI',
+            value: "a",
+            text: "Karena React malas memperbarui UI",
           },
           {
-            value: 'b',
-            text: 'Karena props adalah satu arah (one-way binding) dari induk ke anak',
+            value: "b",
+            text: "Karena props adalah satu arah (one-way binding) dari induk ke anak",
           },
           {
-            value: 'c',
-            text: 'Karena komponen anak tidak boleh punya variabel sendiri',
+            value: "c",
+            text: "Karena komponen anak tidak boleh punya variabel sendiri",
           },
         ],
-        img: '',
-        code: '',
+        img: "",
+        code: "",
         point: 5,
       },
     ],
   },
   {
-    name: '/dashboard/fullstack/quiz-hooks',
+    name: "/dashboard/fullstack/quiz-hooks",
     items: [
       {
-        id: 'one',
-        question: '1. Apa itu state dalam React?',
+        id: "one",
+        question: "1. Apa itu state dalam React?",
         answers: [
           {
-            value: 'a',
-            text: 'Sebuah fungsi untuk mengubah halaman',
+            value: "a",
+            text: "Sebuah fungsi untuk mengubah halaman",
           },
           {
-            value: 'b',
-            text: 'Sebuah variabel biasa yang tidak bisa berubah',
+            value: "b",
+            text: "Sebuah variabel biasa yang tidak bisa berubah",
           },
           {
-            value: 'c',
-            text: 'Sebuah nilai yang bisa berubah di dalam komponen',
+            value: "c",
+            text: "Sebuah nilai yang bisa berubah di dalam komponen",
           },
           {
-            value: 'd',
-            text: 'Sebuah elemen HTML',
+            value: "d",
+            text: "Sebuah elemen HTML",
           },
         ],
-        img: '',
-        code: '',
+        img: "",
+        code: "",
         point: 5,
       },
       {
-        id: 'two',
-        question: '2. Apa fungsi dari useState di React?',
+        id: "two",
+        question: "2. Apa fungsi dari useState di React?",
         answers: [
           {
-            value: 'a',
-            text: 'Untuk membuat efek samping',
+            value: "a",
+            text: "Untuk membuat efek samping",
           },
           {
-            value: 'b',
-            text: 'Untuk menyimpan dan mengubah nilai state',
+            value: "b",
+            text: "Untuk menyimpan dan mengubah nilai state",
           },
           {
-            value: 'c',
-            text: 'Untuk menghapus elemen dari DOM',
+            value: "c",
+            text: "Untuk menghapus elemen dari DOM",
           },
           {
-            value: 'd',
-            text: 'Untuk menghubungkan ke API',
+            value: "d",
+            text: "Untuk menghubungkan ke API",
           },
         ],
-        img: '',
-        code: '',
+        img: "",
+        code: "",
         point: 5,
       },
       {
-        id: 'three',
-        question: '3. Apa yang akan ditampilkan oleh kode berikut saat pertama kali dirender?',
+        id: "three",
+        question:
+          "3. Apa yang akan ditampilkan oleh kode berikut saat pertama kali dirender?",
         answers: [
           {
-            value: 'a',
-            text: 'Nilai: 0',
+            value: "a",
+            text: "Nilai: 0",
           },
           {
-            value: 'b',
-            text: 'Nilai: undefined',
+            value: "b",
+            text: "Nilai: undefined",
           },
           {
-            value: 'c',
-            text: 'Nilai: 10',
+            value: "c",
+            text: "Nilai: 10",
           },
           {
-            value: 'd',
-            text: 'Tidak ada output',
+            value: "d",
+            text: "Tidak ada output",
           },
         ],
-        img: '',
+        img: "",
         code: `funtion Contoh(){
     const [angka, setAngka] = useState(10);
     return <h2>Nilai: {angka}</h2>;
@@ -794,123 +812,125 @@ console.log(add(3, 4, 5))`,
         point: 10,
       },
       {
-        id: 'four',
-        question: '4. Bagaimana cara mengubah state dalam useState?',
+        id: "four",
+        question: "4. Bagaimana cara mengubah state dalam useState?",
         answers: [
           {
-            value: 'a',
+            value: "a",
             text: (
               <p>
-                <code className='language-js'>{`angka = 5;`}</code>
+                <code className="language-js">{`angka = 5;`}</code>
               </p>
             ),
           },
           {
-            value: 'b',
+            value: "b",
             text: (
               <p>
-                <code className='language-js'>{`useState(5);`}</code>
+                <code className="language-js">{`useState(5);`}</code>
               </p>
             ),
           },
           {
-            value: 'c',
+            value: "c",
             text: (
               <p>
-                <code className='language-js'>{`setAngka(5);`}</code>
+                <code className="language-js">{`setAngka(5);`}</code>
               </p>
             ),
           },
           {
-            value: 'd',
+            value: "d",
             text: (
               <p>
-                <code className='language-js'>{`changeState(5);`}</code>
+                <code className="language-js">{`changeState(5);`}</code>
               </p>
             ),
           },
         ],
-        img: '',
-        code: '',
+        img: "",
+        code: "",
         point: 5,
       },
       {
-        id: 'five',
-        question: '5. Apa fungsi utama dari useEffect di React?',
+        id: "five",
+        question: "5. Apa fungsi utama dari useEffect di React?",
         answers: [
           {
-            value: 'a',
-            text: 'Untuk mengubah nilai state secara langsung',
+            value: "a",
+            text: "Untuk mengubah nilai state secara langsung",
           },
           {
-            value: 'b',
-            text: 'Untuk menjalankan kode saat komponen berubah atau dimount',
+            value: "b",
+            text: "Untuk menjalankan kode saat komponen berubah atau dimount",
           },
           {
-            value: 'c',
-            text: 'Untuk menambahkan event listener ke tombol',
+            value: "c",
+            text: "Untuk menambahkan event listener ke tombol",
           },
           {
-            value: 'd',
-            text: 'Untuk membuat style CSS di React',
+            value: "d",
+            text: "Untuk membuat style CSS di React",
           },
         ],
-        img: '',
-        code: '',
+        img: "",
+        code: "",
         point: 5,
       },
       {
-        id: 'six',
+        id: "six",
         question: (
-          <div className='flex-1'>
+          <div className="flex-1">
             6. Kapan useEffect dengan dependensi kosong (
-            <code className='language-js'>{`useEffect(() => {}, [])`}</code>) akan dijalankan?
+            <code className="language-js">{`useEffect(() => {}, [])`}</code>)
+            akan dijalankan?
           </div>
         ),
         answers: [
           {
-            value: 'a',
-            text: 'Setiap kali state berubah',
+            value: "a",
+            text: "Setiap kali state berubah",
           },
           {
-            value: 'b',
-            text: 'Setiap kali komponen di-render ulang',
+            value: "b",
+            text: "Setiap kali komponen di-render ulang",
           },
           {
-            value: 'c',
-            text: 'Hanya saat komponen pertama kali muncul',
+            value: "c",
+            text: "Hanya saat komponen pertama kali muncul",
           },
           {
-            value: 'd',
-            text: 'Tidak pernah dijalankan',
+            value: "d",
+            text: "Tidak pernah dijalankan",
           },
         ],
-        img: '',
-        code: '',
+        img: "",
+        code: "",
         point: 5,
       },
       {
-        id: 'seven',
-        question: '7. Apa output dari kode berikut setelah tombol ditekan sekali?',
+        id: "seven",
+        question:
+          "7. Apa output dari kode berikut setelah tombol ditekan sekali?",
         answers: [
           {
-            value: 'a',
-            text: 'Tidak ada log di console',
+            value: "a",
+            text: "Tidak ada log di console",
           },
           {
-            value: 'b',
-            text: 'State berubah! Hitung: 0',
+            value: "b",
+            text: "State berubah! Hitung: 0",
           },
           {
-            value: 'c',
-            text: 'State berubah! Hitung: 1',
+            value: "c",
+            text: "State berubah! Hitung: 1",
           },
           {
-            value: 'd',
+            value: "d",
             text: '"State berubah! Hitung: 0" dan "State berubah! Hitung: 1"',
           },
         ],
-        img: '',
+        img: "",
         code: `function Contoh(){
     const [hitung, setHitung] = useState(0);
 
@@ -928,299 +948,308 @@ console.log(add(3, 4, 5))`,
         point: 10,
       },
       {
-        id: 'eight',
+        id: "eight",
         question: (
-          <div className='flex-1'>
-            8. Apa yang terjadi jika kita tidak memberikan array dependensi pada useEffect (
-            <code className='language-js'>{`useEffect(() => {...})`}</code>
+          <div className="flex-1">
+            8. Apa yang terjadi jika kita tidak memberikan array dependensi pada
+            useEffect (
+            <code className="language-js">{`useEffect(() => {...})`}</code>
             )?
           </div>
         ),
         answers: [
           {
-            value: 'a',
-            text: 'useEffect tidak akan pernah dijalankan',
+            value: "a",
+            text: "useEffect tidak akan pernah dijalankan",
           },
           {
-            value: 'b',
-            text: 'useEffect hanya dijalankan saat pertama kali render',
+            value: "b",
+            text: "useEffect hanya dijalankan saat pertama kali render",
           },
           {
-            value: 'c',
-            text: 'State berubah! Hitung: 1',
+            value: "c",
+            text: "State berubah! Hitung: 1",
           },
           {
-            value: 'd',
-            text: 'Error',
+            value: "d",
+            text: "Error",
           },
         ],
-        img: '',
-        code: '',
+        img: "",
+        code: "",
         point: 5,
       },
     ],
   },
   {
-    name: '/dashboard/fullstack/quiz-api',
+    name: "/dashboard/fullstack/quiz-api",
     items: [
       {
-        id: 'one',
-        question: '1. Apa fungsi utama dari Axios dalam React?',
+        id: "one",
+        question: "1. Apa fungsi utama dari Axios dalam React?",
         answers: [
           {
-            value: 'a',
-            text: 'Mengubah warna halaman',
+            value: "a",
+            text: "Mengubah warna halaman",
           },
           {
-            value: 'b',
-            text: 'Mengambil dan mengirim data dari/ke API',
+            value: "b",
+            text: "Mengambil dan mengirim data dari/ke API",
           },
           {
-            value: 'c',
-            text: 'Membuat animasi',
+            value: "c",
+            text: "Membuat animasi",
           },
         ],
-        img: '',
-        code: '',
+        img: "",
+        code: "",
         point: 5,
       },
       {
-        id: 'two',
+        id: "two",
         question: (
-          <div className='flex-1'>
-            2. Apa perbedaan utama antara <code className='language-js'>fetch()</code> dan{' '}
-            <code className='language-js'>axios</code>?
+          <div className="flex-1">
+            2. Apa perbedaan utama antara{" "}
+            <code className="language-js">fetch()</code> dan{" "}
+            <code className="language-js">axios</code>?
           </div>
         ),
         answers: [
           {
-            value: 'a',
+            value: "a",
             text: (
               <p>
-                <code className='language-js'>fetch()</code> lebih mudah digunakan daripada Axios
+                <code className="language-js">fetch()</code> lebih mudah
+                digunakan daripada Axios
               </p>
             ),
           },
           {
-            value: 'b',
-            text: 'Axios otomatis mengubah response ke JSON',
+            value: "b",
+            text: "Axios otomatis mengubah response ke JSON",
           },
           {
-            value: 'c',
+            value: "c",
             text: (
               <p>
-                <code className='language-js'>fetch()</code> selalu lebih cepat daripada Axios
+                <code className="language-js">fetch()</code> selalu lebih cepat
+                daripada Axios
               </p>
             ),
           },
         ],
-        img: '',
-        code: '',
+        img: "",
+        code: "",
         point: 5,
       },
       {
-        id: 'three',
+        id: "three",
         question: (
-          <div className='flex-1'>
-            3. Apa fungsi dari <code className='language-js'>useEffect</code> dalam pengambilan data
-            API?
+          <div className="flex-1">
+            3. Apa fungsi dari <code className="language-js">useEffect</code>{" "}
+            dalam pengambilan data API?
           </div>
         ),
         answers: [
           {
-            value: 'a',
-            text: 'Menjalankan kode setiap kali halaman di-refresh',
+            value: "a",
+            text: "Menjalankan kode setiap kali halaman di-refresh",
           },
           {
-            value: 'b',
-            text: 'Menyimpan data di dalam komponen',
+            value: "b",
+            text: "Menyimpan data di dalam komponen",
           },
           {
-            value: 'c',
-            text: 'Mempercepat proses loading',
+            value: "c",
+            text: "Mempercepat proses loading",
           },
         ],
-        img: '',
+        img: "",
         code: ``,
         point: 5,
       },
       {
-        id: 'four',
+        id: "four",
         question: (
-          <div className='flex-1'>
-            4. Kapan sebaiknya kita menggunakan <code className='language-js'>useEffect</code>{' '}
-            dengan array dependency kosong <code className='language-js'>[]</code>?
+          <div className="flex-1">
+            4. Kapan sebaiknya kita menggunakan{" "}
+            <code className="language-js">useEffect</code> dengan array
+            dependency kosong <code className="language-js">[]</code>?
           </div>
         ),
         answers: [
           {
-            value: 'a',
-            text: 'Setiap kali user menekan tombol',
+            value: "a",
+            text: "Setiap kali user menekan tombol",
           },
           {
-            value: 'b',
-            text: 'Hanya saat komponen pertama kali muncul',
+            value: "b",
+            text: "Hanya saat komponen pertama kali muncul",
           },
           {
-            value: 'c',
-            text: 'Setiap kali state berubah',
+            value: "c",
+            text: "Setiap kali state berubah",
           },
         ],
-        img: '',
-        code: '',
+        img: "",
+        code: "",
         point: 5,
       },
       {
-        id: 'five',
-        question: '5. Apa yang terjadi jika kita tidak menangani error dalam Axios?',
+        id: "five",
+        question:
+          "5. Apa yang terjadi jika kita tidak menangani error dalam Axios?",
         answers: [
           {
-            value: 'a',
-            text: 'Program akan tetap berjalan tanpa masalah',
+            value: "a",
+            text: "Program akan tetap berjalan tanpa masalah",
           },
           {
-            value: 'b',
-            text: 'Bisa terjadi error yang tidak ditampilkan dan menyebabkan crash',
+            value: "b",
+            text: "Bisa terjadi error yang tidak ditampilkan dan menyebabkan crash",
           },
           {
-            value: 'c',
-            text: 'Axios otomatis mengatasi semua error',
+            value: "c",
+            text: "Axios otomatis mengatasi semua error",
           },
         ],
-        img: '',
-        code: '',
+        img: "",
+        code: "",
         point: 5,
       },
       {
-        id: 'six',
-        question: '6. Apa yang dilakukan kode berikut? ',
+        id: "six",
+        question: "6. Apa yang dilakukan kode berikut? ",
         answers: [
           {
-            value: 'a',
-            text: 'Menghapus semua data dari API',
+            value: "a",
+            text: "Menghapus semua data dari API",
           },
           {
-            value: 'b',
-            text: 'Mengambil data dari API dan mencetaknya ke console',
+            value: "b",
+            text: "Mengambil data dari API dan mencetaknya ke console",
           },
           {
-            value: 'c',
-            text: 'Mengubah data dalam API',
+            value: "c",
+            text: "Mengubah data dalam API",
           },
         ],
-        img: '',
+        img: "",
         code: `axios.get("https://jsonplaceholder.typicode.com/posts")
     .then(response => console.log(response.data))
 	.catch(error => console.error(error));`,
         point: 10,
       },
       {
-        id: 'seven',
-        question: '7. Dalam kode berikut, di mana data API disimpan?',
+        id: "seven",
+        question: "7. Dalam kode berikut, di mana data API disimpan?",
         answers: [
           {
-            value: 'a',
-            text: 'Dalam sebuah file terpisah',
+            value: "a",
+            text: "Dalam sebuah file terpisah",
           },
           {
-            value: 'b',
+            value: "b",
             text: (
               <p>
-                Di dalam state <code className='language-js'>posts</code>
+                Di dalam state <code className="language-js">posts</code>
               </p>
             ),
           },
           {
-            value: 'c',
-            text: 'Dalam API',
+            value: "c",
+            text: "Dalam API",
           },
         ],
-        img: '',
+        img: "",
         code: `const [posts, setPosts] = useState([]);`,
         point: 10,
       },
       {
-        id: 'eight',
-        question: '8. Apa yang ditampilkan jika API gagal dipanggil?',
+        id: "eight",
+        question: "8. Apa yang ditampilkan jika API gagal dipanggil?",
         answers: [
           {
-            value: 'a',
-            text: 'Data tetap muncul',
+            value: "a",
+            text: "Data tetap muncul",
           },
           {
-            value: 'b',
+            value: "b",
             text: (
               <p>
-                Pesan error yang sudah diset dalam <code className='language-js'>catch()</code>
+                Pesan error yang sudah diset dalam{" "}
+                <code className="language-js">catch()</code>
               </p>
             ),
           },
           {
-            value: 'c',
-            text: 'Halaman akan crash',
+            value: "c",
+            text: "Halaman akan crash",
           },
         ],
-        img: '',
-        code: '',
+        img: "",
+        code: "",
         point: 5,
       },
       {
-        id: 'nine',
-        question: '9. Bagaimana cara menampilkan hanya 5 data pertama dari API?',
+        id: "nine",
+        question:
+          "9. Bagaimana cara menampilkan hanya 5 data pertama dari API?",
         answers: [
           {
-            value: 'a',
+            value: "a",
             text: (
               <p>
-                <code className='language-js'>{`posts.slice(0, 5)`}</code>
+                <code className="language-js">{`posts.slice(0, 5)`}</code>
               </p>
             ),
           },
           {
-            value: 'b',
+            value: "b",
             text: (
               <p>
-                <code className='language-js'>{`posts.filter(5)`}</code>
+                <code className="language-js">{`posts.filter(5)`}</code>
               </p>
             ),
           },
           {
-            value: 'c',
+            value: "c",
             text: (
               <p>
-                <code className='language-js'>{`posts.map(5)`}</code>
+                <code className="language-js">{`posts.map(5)`}</code>
               </p>
             ),
           },
         ],
-        img: '',
-        code: '',
+        img: "",
+        code: "",
         point: 5,
       },
       {
-        id: 'ten',
+        id: "ten",
         question: (
-          <div className='flex-1'>
-            10. Apa yang terjadi jika kita lupa menambahkan <code className='language-js'>[]</code>{' '}
-            di <code className='language-js'>useEffect</code>?
+          <div className="flex-1">
+            10. Apa yang terjadi jika kita lupa menambahkan{" "}
+            <code className="language-js">[]</code> di{" "}
+            <code className="language-js">useEffect</code>?
           </div>
         ),
         answers: [
           {
-            value: 'a',
-            text: 'API akan dipanggil berkali-kali setiap render ulang',
+            value: "a",
+            text: "API akan dipanggil berkali-kali setiap render ulang",
           },
           {
-            value: 'b',
-            text: 'API hanya dipanggil sekali',
+            value: "b",
+            text: "API hanya dipanggil sekali",
           },
           {
-            value: 'c',
-            text: 'Program tidak akan berjalan',
+            value: "c",
+            text: "Program tidak akan berjalan",
           },
         ],
-        img: '',
-        code: '',
+        img: "",
+        code: "",
         point: 5,
       },
     ],

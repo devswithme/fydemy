@@ -18,16 +18,20 @@ import {
   useSidebar,
   SidebarFooter,
 } from "@/components/ui/sidebar";
-import { auth } from "@/config/firebase";
+import { app, auth } from "@/config/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { checkPremiumStatus } from "@/config/firebase/auth";
 import NavUser from "./nav-user";
 import { AuthContext } from "./provider/AuthProvider";
+import { Coins, Gauge, Moon } from "lucide-react";
+import { getDatabase, onValue, ref } from "firebase/database";
+import { useTheme } from "next-themes";
 
 export function AppSidebar() {
   const pathname = usePathname();
   const { isMobile, setOpenMobile } = useSidebar();
   const [isPremium, setIsPremium] = React.useState<boolean>(false);
+  const [xp, setXp] = React.useState<number>(0);
 
   const userAuth = React.useContext(AuthContext);
 
@@ -37,6 +41,13 @@ export function AppSidebar() {
       if (user) {
         const premiumStatus = await checkPremiumStatus(user.uid);
         setIsPremium(premiumStatus);
+
+        const db = getDatabase(app);
+        const userRef = ref(db, `users/${user.uid}/xp`);
+        onValue(userRef, (snapshot) => {
+          const value = snapshot.val();
+          setXp(typeof value === "number" ? value : 0);
+        });
       } else {
         setIsPremium(false);
       }
@@ -55,8 +66,10 @@ export function AppSidebar() {
     ? navItems
     : navItems.filter((item) => !item.premium);
 
+  const { theme, setTheme } = useTheme();
+
   return (
-    <Sidebar>
+    <Sidebar collapsible="offcanvas">
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
@@ -68,6 +81,15 @@ export function AppSidebar() {
                   alt="logo"
                   width={110}
                   height={110}
+                  className="dark:hidden block"
+                />
+                <Image
+                  priority
+                  src="/logo_dark.svg"
+                  alt="logo_dark"
+                  width={110}
+                  height={110}
+                  className="dark:block hidden"
                 />
               </Link>
             </SidebarMenuButton>
@@ -75,6 +97,37 @@ export function AppSidebar() {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  asChild
+                  isActive={pathname === "/dashboard"}
+                  className={
+                    pathname === "/dashboard" ? "!bg-sidebar-accent" : ""
+                  }
+                >
+                  <Link href="/dashboard">
+                    <Gauge /> Dashboard
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                >
+                  <Moon /> {theme === "dark" ? "Light" : "Dark"} Mode
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton className="!opacity-100" disabled>
+                  <Coins /> {xp} XP
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
         {filteredNavItems.map((section) => (
           <SidebarGroup key={section.name}>
             <SidebarGroupLabel>{section.name}</SidebarGroupLabel>
@@ -82,7 +135,13 @@ export function AppSidebar() {
               <SidebarMenu>
                 {section.items.map((item) => (
                   <SidebarMenuItem key={item.url}>
-                    <SidebarMenuButton asChild isActive={pathname === item.url}>
+                    <SidebarMenuButton
+                      asChild
+                      isActive={pathname === item.url}
+                      className={
+                        pathname === item.url ? "!bg-sidebar-accent" : ""
+                      }
+                    >
                       <Link href={item.url}>
                         <item.icon />
                         {item.title}
@@ -101,6 +160,7 @@ export function AppSidebar() {
             name: userAuth?.user?.name || "",
             email: userAuth?.user?.email || "",
             avatar: userAuth?.user?.avatar || "",
+            xp: xp,
             isPremium,
           }}
         />

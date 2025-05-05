@@ -60,8 +60,7 @@ const Home = () => {
         href="https://chat.whatsapp.com/JB4Co43TxUdCBmTQ5BjnHN"
         target="_blank"
         className={buttonVariants({
-          className:
-            "fixed bottom-8 right-8 z-50 !bg-green-700 border-black text-white",
+          className: "fixed bottom-8 right-8 z-50 !bg-green-700 text-white",
           variant: "menu",
         })}
       >
@@ -70,13 +69,26 @@ const Home = () => {
       <nav className="fixed top-0 left-0 w-full backdrop-blur-lg z-20">
         <div className="max-w-4xl mx-auto py-6 px-8 lg:px-0 flex justify-between items-center">
           <Link href="/">
-            <Image src="/logo.svg" alt="logo" width={110} height={110} />
+            <Image
+              src="/logo.svg"
+              className="dark:hidden block"
+              alt="logo"
+              width={110}
+              height={110}
+            />
+            <Image
+              src="/logo_dark.svg"
+              alt="logo_dark"
+              className="dark:block hidden"
+              width={110}
+              height={110}
+            />
           </Link>
           <Link
             href="/login"
             className={buttonVariants({
               variant: "menu",
-              className: "!bg-[#851BFF] text-white border-black shadow-lg",
+              className: "!bg-[#851BFF] text-white  shadow-lg",
             })}
           >
             <LogIn /> Login
@@ -101,7 +113,7 @@ const Home = () => {
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5">
               <Button
                 variant="menu"
-                className="bg-[#851BFF] text-white border-black"
+                className="bg-[#851BFF] text-white "
                 disabled
               >
                 <Frame />
@@ -121,7 +133,7 @@ const Home = () => {
               </Button>
             </div>
           </div>
-          <div className="relative border border-black w-full aspect-square bg-neutral-200 rounded-xl overflow-hidden">
+          <div className="relative border  w-full aspect-square bg-neutral-200 rounded-xl overflow-hidden">
             {/* <Image
 							src='/home/2.png'
 							alt='2'
@@ -133,7 +145,7 @@ const Home = () => {
               className={buttonVariants({
                 variant: "menu",
                 className:
-                  "absolute bottom-8 right-8 shadow-xl !bg-[#851BFF] text-white border-black -rotate-1",
+                  "absolute bottom-8 right-8 shadow-xl !bg-[#851BFF] text-white  -rotate-1",
               })}
             >
               Register Now <ArrowUpRight />
@@ -156,9 +168,9 @@ const Home = () => {
               </p>
             </div>
           </div>
-          <div className="w-full border border-black rounded-xl overflow-hidden">
-            <Table className="bg-white">
-              <TableHeader className="bg-neutral-100">
+          <div className="w-full border rounded-xl overflow-hidden">
+            <Table>
+              <TableHeader className="bg-muted">
                 <TableRow>
                   <TableHead className="pl-6">Rank</TableHead>
                   <TableHead>Username</TableHead>
@@ -171,7 +183,11 @@ const Home = () => {
                   ranks?.map((user, i) => (
                     <TableRow
                       key={user.uid}
-                      className={i == 0 ? "bg-yellow-50" : ""}
+                      className={
+                        i == 0
+                          ? "bg-yellow-50 dark:text-black hover:dark:text-white"
+                          : ""
+                      }
                     >
                       <TableCell className="pl-6 py-3">{`#${i + 1}`}</TableCell>
                       <TableCell>
@@ -197,10 +213,10 @@ const Home = () => {
             </div>
           </div>
           <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-6 rounded-xl border-2 border-[#851BFF] bg-neutral-50 space-y-4 shadow-lg shadow-[#851BFF]/30">
+            <div className="p-6 rounded-xl border border-[#851BFF] space-y-4">
               <div className="flex gap-x-4 items-center">
                 <Book
-                  className="w-8 h-8 p-2 bg-[#851BFF]/10 fill-[#851BFF]/50"
+                  className="w-8 h-8 p-2 rounded bg-[#851BFF]/10 text-black fill-[#851BFF]/50"
                   strokeWidth={3}
                 />
                 <div className="-space-y-1">
@@ -237,9 +253,9 @@ const Home = () => {
                 </li>
               </ul>
             </div>
-            <div className="p-6 rounded-xl border-2 space-y-4 border-yellow-700 shadow-lg shadow-yellow-700/30">
+            <div className="p-6 rounded-xl border space-y-4 border-yellow-600">
               <div className="flex items-center gap-x-4">
-                <Sparkles className="p-2 bg-yellow-50 fill-yellow-500 w-8 h-8 rounded-md" />
+                <Sparkles className="p-2 bg-yellow-50 text-black fill-yellow-500 w-8 h-8 rounded-md" />
                 <div className="-space-y-1">
                   <h1 className="text-base sm:text-lg font-semibold">
                     Premium
@@ -349,7 +365,7 @@ const Home = () => {
           >
             <CarouselContent className="-ml-6">
               <CarouselItem className="md:basis-1/2 pl-6">
-                <div className="border border-black p-6 rounded-xl space-y-4 bg-white">
+                <div className="border  p-6 rounded-xl space-y-4 bg-white">
                   <div className="flex gap-x-4 items-center ">
                     <Avatar className="w-8 h-8 ring-2 ring-blue-700 ring-offset-2">
                       <AvatarImage src="https://github.com/shadcn.png" />
@@ -367,7 +383,7 @@ const Home = () => {
                 </div>
               </CarouselItem>
               <CarouselItem className="md:basis-1/2 pl-6">
-                <div className="border border-black p-6 rounded-xl space-y-4 bg-white">
+                <div className="border  p-6 rounded-xl space-y-4 bg-white">
                   <div className="flex gap-x-4 items-center ">
                     <Avatar className="w-8 h-8 ring-2 ring-blue-700 ring-offset-2">
                       <AvatarImage src="https://github.com/shadcn.png" />
@@ -385,7 +401,7 @@ const Home = () => {
                 </div>
               </CarouselItem>
               <CarouselItem className="md:basis-1/2 pl-6">
-                <div className="border border-black p-6 rounded-xl space-y-4 bg-white">
+                <div className="border  p-6 rounded-xl space-y-4 bg-white">
                   <div className="flex gap-x-4 items-center ">
                     <Avatar className="w-8 h-8 ring-2 ring-blue-700 ring-offset-2">
                       <AvatarImage src="https://github.com/shadcn.png" />
@@ -469,7 +485,7 @@ const Home = () => {
             </Accordion>
           </div>
         </section>
-        <footer className="bg-[#851BFF] rounded-xl border-2 w-full h-fit p-8 sm:p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 border-black text-white">
+        <footer className="bg-[#851BFF] rounded-xl border w-full h-fit p-8 sm:p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10  text-white">
           <div className="space-y-2">
             <Link href="/">
               <Image src="/logo_dark.svg" alt="logo" width={90} height={90} />

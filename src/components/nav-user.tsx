@@ -1,10 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { getDatabase, ref, onValue } from "firebase/database";
-import { getAuth } from "firebase/auth";
-import { app } from "@/config/firebase"; // pastikan ini inisialisasi Firebase app
-
 import {
   SidebarMenu,
   SidebarMenuButton,
@@ -40,28 +35,12 @@ const NavUser = ({
     name: string;
     email: string;
     avatar: string;
+    xp: number;
     isPremium: boolean;
   };
 }) => {
   const { isMobile } = useSidebar();
   const router = useRouter();
-  const [xp, setXp] = useState<number>(0);
-
-  useEffect(() => {
-    const auth = getAuth(app);
-    const currentUser = auth.currentUser;
-
-    if (user.isPremium && currentUser) {
-      const db = getDatabase(app);
-      const userRef = ref(db, `users/${currentUser.uid}/xp`);
-      onValue(userRef, (snapshot) => {
-        const value = snapshot.val();
-        setXp(typeof value === "number" ? value : 0);
-      });
-    } else {
-      setXp(0);
-    }
-  }, [user.isPremium]);
 
   return (
     <SidebarMenu>
@@ -129,7 +108,7 @@ const NavUser = ({
             <DropdownMenuGroup>
               <DropdownMenuItem disabled className="!opacity-100">
                 <Coins />
-                {`${xp} XP`}
+                {`${user.xp} XP`}
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />

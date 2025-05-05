@@ -74,6 +74,71 @@ export const updateXp = async (point: number, path: string) => {
   }
 };
 
+export const updateSubmission = async (subId: string) => {
+  const currentUser = auth.currentUser;
+  if (!currentUser) return;
+
+  const premiumStatus = await checkPremiumStatus(currentUser.uid);
+  const subRef = ref(db, `users/${currentUser.uid}/subs`);
+  const snapshot = await get(subRef);
+
+  const subs = snapshot.val() || {};
+  const [key, value] = subId.split("!");
+
+  if (
+    premiumStatus ||
+    (!premiumStatus && (!subs[key] || subs[key].length < 1))
+  ) {
+    if (!subs[key]) {
+      subs[key] = [];
+    }
+    if (!subs[key].includes(value)) {
+      subs[key].push(value);
+    }
+    await set(subRef, subs);
+  }
+};
+
+export const getUserSubmissionHistory = async (userUid: string) => {
+  const subRef = ref(db, `users/${userUid}/subs`);
+  const snapshot = await get(subRef);
+
+  const subs = snapshot.val() || {};
+  const submissionHistory: { url: string; category: string; status: number }[] =
+    [];
+
+  // Iterate through each category in subs
+  for (const [category, values] of Object.entries(subs)) {
+    if (Array.isArray(values)) {
+      // Check the status of each submission in the array
+      values.forEach((value) => {
+        const [url, status] = value.split("^");
+        submissionHistory.push({
+          url,
+          category,
+          status: parseInt(status, 10), // Convert status to a number
+        });
+      });
+    }
+  }
+
+  return submissionHistory;
+};
+
+export const checkSubmissionStatus = async (subId: string, userUid: string) => {
+  const subRef = ref(db, `users/${userUid}/subs`);
+  const snapshot = await get(subRef);
+
+  const subs = snapshot.val() || {};
+
+  if (subs[subId] && Array.isArray(subs[subId]) && subs[subId].length > 0) {
+    const lastValue = subs[subId][subs[subId].length - 1];
+    return lastValue.split("^")[1];
+  }
+
+  return null;
+};
+
 export const getTopUsersByXp = async () => {
   try {
     const usersRef = ref(db, "users");
