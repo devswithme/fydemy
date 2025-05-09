@@ -74,6 +74,105 @@ export const updateXp = async (point: number, path: string) => {
   }
 };
 
+export const addInvoice = async (invoiceRef: string) => {
+  const currentUser = auth.currentUser;
+  if (!currentUser) return;
+
+  const invRef = ref(db, `users/${currentUser.uid}/invs`);
+  const snapshot = await get(invRef);
+
+  const invs = snapshot.val() || [];
+
+  invs.push({
+    ref: invoiceRef,
+    paid_at: 0,
+  });
+
+  await set(invRef, invs);
+};
+
+export const getUserInvoices = async (isCheck?: boolean) => {
+  const currentUser = auth.currentUser;
+  if (!currentUser) return;
+
+  if (isCheck) console.log(currentUser);
+
+  const invRef = ref(db, `users/${currentUser.uid}/invs`);
+  const snapshot = await get(isCheck ? query(invRef, limitToLast(1)) : invRef);
+
+  const invs = snapshot.val() || [];
+
+  const lastInvoice = invs[invs.length - 1];
+  const paidAt = new Date(lastInvoice?.paid_at);
+  const now = new Date();
+  // @ts-expect-error now and paidAt err
+  const diffInDays = (now - paidAt) / (1000 * 60 * 60 * 24);
+
+  const userPremiumRef = ref(db, `users/${currentUser.uid}/isPremium`);
+
+  if (invs.length > 0 && isCheck) {
+    if (
+      (lastInvoice.ref.split("*")[1] === "1m" && diffInDays >= 30) ||
+      (lastInvoice.ref.split("*")[1] === "2m" && diffInDays >= 60)
+    )
+      await set(userPremiumRef, false);
+  } else {
+    await set(userPremiumRef, true);
+  }
+
+  if (!isCheck) {
+    const duration = lastInvoice?.ref.split("*")[1];
+    return {
+      // @ts-expect-error inv does not have type
+      invs: invs.map((inv) => ({ ...inv, ref: inv.ref.split("*")[0] })),
+      canPay:
+        invs.length === 0 ||
+        (lastInvoice.paid_at !== 0 &&
+          ((duration === "1m" && diffInDays >= 30) ||
+            (duration === "2m" && diffInDays >= 60))),
+    };
+  }
+};
+
+export const updateInvoiceByRef = async (invoiceRef: string) => {
+  const usersRef = ref(db, "users");
+  const snapshot = await get(usersRef);
+
+  if (!snapshot.exists()) {
+    console.log("No users found.");
+    return;
+  }
+
+  const users = snapshot.val();
+
+  for (const [userId, userData] of Object.entries(users)) {
+    // @ts-expect-error props type invs does not exists
+    if (userData && userData.invs && Array.isArray(userData.invs)) {
+      // @ts-expect-error props type invs does not exists
+      const updatedInvoices = userData.invs.map(
+        (invoice: { ref: string; paid_at: string }) => {
+          if (invoice.ref.split("*")[0] === invoiceRef) {
+            return { ...invoice, paid_at: new Date() };
+          }
+          return invoice;
+        }
+      );
+
+      const hasChanges =
+        // @ts-expect-error props type invs does not exists
+        JSON.stringify(updatedInvoices) !== JSON.stringify(userData.invs);
+
+      if (hasChanges) {
+        const userInvRef = ref(db, `users/${userId}/invs`);
+        await set(userInvRef, updatedInvoices);
+
+        const userPremiumRef = ref(db, `users/${userId}/isPremium`);
+        await set(userPremiumRef, true);
+      }
+    }
+  }
+};
+
 export const updateSubmission = async (subId: string) => {
   const currentUser = auth.currentUser;
   if (!currentUser) return;

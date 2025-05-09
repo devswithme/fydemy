@@ -10,6 +10,9 @@ const withPWA = nextPWA({
 
 const nextConfig: NextConfig = {
   /* config options here */
+  images: {
+    domains: ["assets.tripay.co.id"],
+  },
 };
 
 export default withPWA(nextConfig);

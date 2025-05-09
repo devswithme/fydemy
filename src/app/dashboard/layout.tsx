@@ -1,3 +1,5 @@
+"use client";
+
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { Toaster } from "@/components/ui/sonner";
@@ -8,12 +10,24 @@ import Link from "next/link";
 import Image from "next/image";
 import { AuthProvider } from "@/components/provider/AuthProvider";
 import { ThemeProvider } from "@/components/theme-provider";
+import { getUserInvoices } from "@/config/firebase";
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+
+  useEffect(() => {
+    async function checkExpired() {
+      await getUserInvoices(true);
+    }
+    checkExpired();
+  }, [pathname]);
+
   return (
     <ThemeProvider
       attribute="class"

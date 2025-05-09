@@ -23,7 +23,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { checkPremiumStatus } from "@/config/firebase/auth";
 import NavUser from "./nav-user";
 import { AuthContext } from "./provider/AuthProvider";
-import { Coins, Gauge, Moon } from "lucide-react";
+import { Coins, CreditCard, Gauge, Moon } from "lucide-react";
 import { getDatabase, onValue, ref } from "firebase/database";
 import { useTheme } from "next-themes";
 
@@ -118,6 +118,19 @@ export function AppSidebar() {
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 >
                   <Moon /> {theme === "dark" ? "Light" : "Dark"} Mode
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  asChild
+                  isActive={pathname === "/dashboard/pay"}
+                  className={
+                    pathname === "/dashboard/pay" ? "!bg-sidebar-accent" : ""
+                  }
+                >
+                  <Link href="/dashboard/pay">
+                    <CreditCard /> Transaction
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>

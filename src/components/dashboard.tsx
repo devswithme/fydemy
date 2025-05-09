@@ -33,8 +33,6 @@ export default function Dashboard() {
     };
     fetchRanks();
   }, [authUser?.user?.uid]);
-
-  console.log(subs);
   return (
     <div className="not-prose space-y-5">
       <h2 className="text-xl font-semibold">
