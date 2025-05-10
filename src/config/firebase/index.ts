@@ -31,6 +31,7 @@ export const signInWithGoogle = async () => {
     if (!snapshot.exists()) {
       await set(userRef, {
         username: user.displayName,
+        email: user.email,
         isPremium: false,
         xp: 0,
       });
@@ -122,10 +123,13 @@ export const getUserInvoices = async (isCheck?: boolean) => {
 
   if (!isCheck) {
     const duration = lastInvoice?.ref.split("*")[1];
+    const isPremium = await get(userPremiumRef);
+
     return {
       // @ts-expect-error inv does not have type
       invs: invs.map((inv) => ({ ...inv, ref: inv.ref.split("*")[0] })),
       canPay:
+        !isPremium.val() ||
         invs.length === 0 ||
         (lastInvoice.paid_at !== 0 &&
           ((duration === "1m" && diffInDays >= 30) ||
@@ -168,6 +172,14 @@ export const updateInvoiceByRef = async (invoiceRef: string) => {
 
         const userPremiumRef = ref(db, `users/${userId}/isPremium`);
         await set(userPremiumRef, true);
+
+        const userEmailRef = ref(db, `users/${userId}/email`);
+        const emailSnapshot = await get(userEmailRef);
+
+        const userNameRef = ref(db, `users/${userId}/username`);
+        const usernameSnapshot = await get(userNameRef);
+
+        return { email: emailSnapshot.val(), username: usernameSnapshot.val() };
       }
     }
   }

@@ -43,3 +43,15 @@ export function getStatusCode(status: string) {
       return "Unknown status";
   }
 }
+
+export function formatUnixTimestamp(unixSeconds: number) {
+  const date = new Date(unixSeconds * 1000);
+  return new Intl.DateTimeFormat("en-GB", {
+    year: "numeric",
+    month: "short",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).format(date);
+}

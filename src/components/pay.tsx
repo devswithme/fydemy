@@ -246,7 +246,7 @@ const Pay = ({
           ))}
         </div>
       ) : (
-        <div className="bg-neutral-50 border p-6 rounded-lg">
+        <div className="bg-muted border p-6 rounded-lg">
           <History className="w-8 h-8 p-1.5 border border-green-100 rounded bg-green-50 text-green-600 mb-2" />
           <h1 className="font-medium">Belum ada transaksi</h1>
           <p className="text-muted-foreground text-sm">
