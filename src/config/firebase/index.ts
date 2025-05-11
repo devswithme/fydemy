@@ -128,12 +128,12 @@ export const getUserInvoices = async (isCheck?: boolean) => {
     return {
       // @ts-expect-error inv does not have type
       invs: invs.map((inv) => ({ ...inv, ref: inv.ref.split("*")[0] })),
-      canPay:
-        !isPremium.val() ||
-        invs.length === 0 ||
-        (lastInvoice.paid_at !== 0 &&
-          ((duration === "1m" && diffInDays >= 30) ||
-            (duration === "2m" && diffInDays >= 60))),
+      canPay: !isPremium.val()
+        ? invs.length === 0 ||
+          (lastInvoice.paid_at !== 0 &&
+            ((duration === "1m" && diffInDays >= 30) ||
+              (duration === "2m" && diffInDays >= 60)))
+        : false,
     };
   }
 };
