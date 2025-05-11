@@ -1,5 +1,7 @@
 import { getChannels } from "@/actions/payment";
-import Pay from "@/components/pay";
+import dynamic from "next/dynamic";
+
+const Pay = dynamic(() => import("@/components/pay"), { ssr: false });
 
 const Page = async () => {
   const { data: channels } = await getChannels();
