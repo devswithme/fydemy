@@ -117,8 +117,6 @@ export const getUserInvoices = async (isCheck?: boolean) => {
       (lastInvoice.ref.split("*")[1] === "2m" && diffInDays >= 60)
     )
       await set(userPremiumRef, false);
-  } else {
-    await set(userPremiumRef, true);
   }
 
   if (!isCheck) {

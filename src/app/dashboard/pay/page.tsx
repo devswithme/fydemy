@@ -107,7 +107,7 @@ const Pay = () => {
             Create a payment
           </Button>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="h-screen sm:h-auto overflow-y-scroll">
           <DialogHeader>
             <DialogTitle>Upgrade to Pro</DialogTitle>
             <DialogDescription>Isi detail pembayaran berikut</DialogDescription>
