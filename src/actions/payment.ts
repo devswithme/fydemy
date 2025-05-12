@@ -13,7 +13,11 @@ const createSignature = async (merchant_ref: string, amount: number) => {
 
 export const getChannels = async () => {
   const response = await axios.get(
-    "https://tripay.co.id/api-sandbox/merchant/payment-channel",
+    `${
+      process.env.NODE_ENV === "production"
+        ? "https://tripay.co.id/api"
+        : "https://tripay.co.id/api-sandbox"
+    }/merchant/payment-channel`,
     {
       headers: {
         Authorization: `Bearer ${process.env.TRIPAY_API_KEY}`,
@@ -57,7 +61,11 @@ export const createTransaction = async (data: {
   };
 
   const { data: response } = await axios.post(
-    "https://tripay.co.id/api-sandbox/transaction/create",
+    `${
+      process.env.NODE_ENV === "production"
+        ? "https://tripay.co.id/api"
+        : "https://tripay.co.id/api-sandbox"
+    }/transaction/create`,
     payload,
     {
       headers: {
