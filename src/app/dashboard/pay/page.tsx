@@ -17,6 +17,7 @@ import { toast } from "sonner";
 import { AuthContext } from "@/components/provider/AuthProvider";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -107,7 +108,7 @@ const Pay = () => {
             Create a payment
           </Button>
         </DialogTrigger>
-        <DialogContent className="h-screen sm:h-auto overflow-y-scroll">
+        <DialogContent>
           <DialogHeader>
             <DialogTitle>Upgrade to Pro</DialogTitle>
             <DialogDescription>Isi detail pembayaran berikut</DialogDescription>
@@ -154,7 +155,7 @@ const Pay = () => {
               <span className="font-mono text-xs">[2]</span> Payment method
             </Label>
             <RadioGroup
-              className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4 overflow-y-scroll h-[20vh]"
               name="code"
               onValueChange={setCode}
             >
@@ -190,7 +191,10 @@ const Pay = () => {
           </div>
 
           {/* Tombol Checkout */}
-          <DialogFooter>
+          <DialogFooter className="gap-y-2">
+            <DialogClose asChild>
+              <Button variant="outline">Back</Button>
+            </DialogClose>
             <Button onClick={handleCheckout}>
               Checkout <ArrowUpRight />
             </Button>

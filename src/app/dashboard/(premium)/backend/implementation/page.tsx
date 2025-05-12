@@ -136,6 +136,25 @@ app.get('/', (req, res) => {
         height={900}
         className="object-cover object-top rounded bg-neutral-300"
       />
+      <pre>
+        <code className="language-js">
+          {`schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Books {
+  id String @id @default(uuid())
+  nama String @unique
+  peminjam String 
+}`}
+        </code>
+      </pre>
       <ul>
         <li>
           Kita ubah provider dalam objek datasouce db menjadi <b>mysql</b> ya
@@ -161,10 +180,33 @@ app.get('/', (req, res) => {
         <code className="language-js">[nama db kalian]</code> menjadi nama
         database yang telah dibuat sebelumnya ya di phpmyadmin.
       </p>
+      <p>
+        Untuk membuat custom username, password dan db via terminal, lalu ketik
+        perintah berikut. Disini kita membuat username bernama{" "}
+        <code>fydemy_user</code> dengan password <code>pwd_123</code> dan
+        database bernama <code>fydemy_db</code> sebagai contoh lalu masukan data
+        tersebut ke dalam variabel <code>DATABASE_URL</code> di dalam file .env.
+        Untuk detail mengenai connection string bisa cek di dokumentasinya
+        Prisma melalui{" "}
+        <a href="https://pris.ly/d/connection-strings">
+          Prisma Connection Strings
+        </a>
+      </p>
       <pre>
         <code className="language-js">
-          {`APP_PORT=3001
-DATABASE_URL="mysql://root:@localhost:3306/[nama db kalian]?schema=public"`}
+          {`mysql -u root -p
+mysql=# CREATE USER fydemy_user WITH PASSWORD 'pwd_123';
+CREATE ROLE
+mysql=# CREATE DATABASE fydemy_db OWNER fydemy_user;
+CREATE DATABASE
+mysql=# GRANT ALL PRIVILEGES ON DATABASE fydemy_db TO fydemy_user;
+GRANT`}
+        </code>
+      </pre>
+      <pre>
+        <code className="language-js">
+          {`APP_PORT=3000
+DATABASE_URL="mysql://[username]:[password]@localhost:3306/[database name]"`}
         </code>
       </pre>
       <p>
@@ -183,8 +225,8 @@ DATABASE_URL="mysql://root:@localhost:3306/[nama db kalian]?schema=public"`}
         dengan perintah ini.
       </p>
       <pre>
-        <code className="language-js">{`npx prisma generate
-npx prisma db push`}</code>
+        <code className="language-js">{`npx prisma db push // untuk migrasi schema dari file schema.prisma ke database kita
+npx prisma generate // untuk mengenali struktur database dari segi prisma client`}</code>
       </pre>
       <Image
         src="/backend/8.png"
@@ -257,6 +299,13 @@ app.get('/books', async (req, res) => {
 	res.json(data)
 })
 `}</code>
+      </pre>
+      <p>
+        Untuk prisma versi terbaru, ubah cara import <code>PrismaClient</code>{" "}
+        menjadi:
+      </p>
+      <pre>
+        <code className="language-js">{`const { PrismaClient } = require("./generated/prisma");`}</code>
       </pre>
       <p>
         Karena kita tadi menjalankan{" "}
@@ -340,7 +389,7 @@ app.post('/books', async (req, res) => {
       </h4>
       <p>
         Nah, disini di urlnya ada tambahan{" "}
-        <code className="language-js">{`/books/{id}`}</code> untuk menandakan
+        <code className="language-js">{`/books/:id`}</code> untuk menandakan
         bahwa kita mendefinisikan variabel id dan itu nilainya bakal dinamis
         atau berubah-ubah.
       </p>
@@ -355,7 +404,7 @@ app.post('/books', async (req, res) => {
         yang lain.
       </p>
       <pre>
-        <code className="language-js">{`app.put('/books/{id}', async (req, res) => {
+        <code className="language-js">{`app.put('/books/:id', async (req, res) => {
 	const { id } = req.params
 	const { nama, peminjam } = req.body
 	await db.books.update({

@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     
     <!-- Logo -->
     <div style="text-align: center; margin-bottom: 20px;">
-      <img src="https://edu.fysite.id/logo.svg" alt="Logo" style="height: 40px;" />
+      <img src="cid:logo" alt="Logo" style="height: 40px;" />
     </div>
 
     <h2 style="color: #000000;">Hi ${username},</h2>

@@ -1,6 +1,7 @@
 "use server";
 
 import { createTransport } from "nodemailer";
+import path from "path";
 
 const transporter = createTransport({
   // @ts-expect-error host props err
@@ -27,5 +28,12 @@ export const sendMail = async ({
     to,
     subject,
     html,
+    attachments: [
+      {
+        filename: "logo_mail.png",
+        path: path.join(process.cwd(), "public", "logo_mail.png"),
+        cid: "logo",
+      },
+    ],
   });
 };

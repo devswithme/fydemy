@@ -72,6 +72,7 @@ const Submission = ({ id }: { id: string }) => {
           <Input
             placeholder="Paste URL disini"
             value={url}
+            className="text-sm"
             onChange={(e) => setUrl(e.target.value)}
           />
           <DialogFooter className="gap-y-2">
@@ -92,7 +93,7 @@ const Submission = ({ id }: { id: string }) => {
                         <div style="background: #ffffff; padding: 20px 24px; padding-top: 28px; border-radius: 8px; border: 1px solid #ccc">
                           <!-- Logo -->
                           <div style="text-align: center; margin-bottom: 20px;">
-                            <img src="https://edu.fysite.id/logo.svg" alt="Logo" style="height: 40px;" />
+                            <img src="cid:logo alt="Logo" style="height: 40px;" />
                           </div>
                   
                           <h2 style="color: #000000;">Hi ${user.name},</h2>

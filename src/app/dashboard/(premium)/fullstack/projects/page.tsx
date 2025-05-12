@@ -12,6 +12,9 @@ export default function Home() {
     <>
       <h1>Project React</h1>
       <Submission id="fs" />
+      <blockquote>
+        Sebelum upload, hapus folder <b>node_modules</b>
+      </blockquote>
       <p>Wuaa wuaa! Kita bikin project React Vite pake API TVMaze yaa! 🎉✨</p>
       <h2>1. Persiapan: Pasang Vite dan React</h2>
       <p>
