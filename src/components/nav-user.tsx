@@ -116,7 +116,7 @@ const NavUser = ({
             <DropdownMenuGroup>
               {!user.isPremium && (
                 <DropdownMenuItem asChild>
-                  <Link href="https://academy.fysite.id" target="_blank">
+                  <Link href="/dashboard/pay">
                     <Sparkles />
                     Upgrade to Pro
                   </Link>

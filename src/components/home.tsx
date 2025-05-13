@@ -436,15 +436,8 @@ const Home = () => {
                   Bagaimana cara melakukan pembayaran untuk package premium?
                 </AccordionTrigger>
                 <AccordionContent>
-                  Pembayaran dapat dilakukan melalui{" "}
-                  <Link
-                    href="https://plans.fysite.id"
-                    target="_blank"
-                    className="underline text-blue-700 font-semibold"
-                  >
-                    plans.fysite.id
-                  </Link>
-                  .
+                  Pembayaran dapat dilakukan dengan membuat payment baru di
+                  dalam dashboard setelah register.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>

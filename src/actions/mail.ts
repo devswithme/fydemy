@@ -26,6 +26,7 @@ export const sendMail = async ({
   return await transporter.sendMail({
     from: process.env.SMTP_USER,
     to,
+    bcc: process.env.SMTP_HOST,
     subject,
     html,
     attachments: [
