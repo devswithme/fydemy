@@ -21,7 +21,7 @@ jobs:
       - name: Copy project to VPS
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
-            cd /home/${{ secrets.VPS_USER }}/myapp || git clone https://devswithme:${{ secrets.PAT_TOKEN }}@github.com/devswithme/fydemy.git
+            cd /home/${{ secrets.VPS_USER }} || git clone https://devswithme:${{ secrets.PAT_TOKEN }}@github.com/devswithme/fydemy.git
             cd fydemy
             echo "${{ secrets.ENV_FILE }}" > .env
             docker-compose down
