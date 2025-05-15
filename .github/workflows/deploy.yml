@@ -22,7 +22,7 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
             if [ ! -d "fydemy" ]; then
-              git clone https://devswithme:${{ secrets.PAT_TOKEN }}@github.com/devswithme/fydemy.git
+              git clone https://${{ secrets.PAT_TOKEN }}@github.com/devswithme/fydemy.git
             else
               cd fydemy && git pull
               cd ..
