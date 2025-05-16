@@ -18,11 +18,31 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
 
+      name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - backend/n
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
+
       - name: Copy project to VPS and deploy
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
             if [ ! -d "fydemy" ]; then
-              git clone https://${{ secrets.PAT_TOKEN }}@github.com/devswithme/fydemy.git
+              git clone https://devswithme:${{ secrets.PAT_TOKEN }}@github.com/devswithme/fydemy.git
             else
               cd fydemy && git pull
               cd ..
@@ -57,3 +77,4 @@ jobs:
             docker compose down
             docker compose up -d --build
           EOF
+
