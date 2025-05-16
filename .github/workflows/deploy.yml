@@ -20,26 +20,13 @@ jobs:
 
       - name: Copy project to VPS and deploy
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << EOF
-            if [ -d "fydemy/.git" ]; then
-              echo "🔁 Repo sudah ada, lakukan hard reset..."
-              cd fydemy
-              git fetch origin
-              git reset --hard origin/backend/n
-            else
-              echo "⬇️ Clone baru repo..."
-              git clone https://devswithme:${{ secrets.PAT_TOKEN }}@github.com/devswithme/fydemy.git
-              cd fydemy
-            fi
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
+            if [ -d "fydemy" ]; then rm -rf fydemy; fi
+            git clone -b backend/n https://devswithme:${{ secrets.PAT_TOKEN }}@github.com/devswithme/fydemy.git
 
-            echo "📁 Current path: \$(pwd)"
-            ls -lah
-
-            echo "${{ secrets.ENV_FILE }}" > .env
-
-            echo "🔍 Cek docker-compose.yml"
-            cat docker-compose.yml || echo "❌ Tidak ditemukan"
-
+            cd fydemy
+            ls -l docker-compose.yml
+            
             docker compose down
             docker compose up -d --build
           EOF
