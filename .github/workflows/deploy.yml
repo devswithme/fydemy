@@ -21,18 +21,19 @@ jobs:
       - name: Copy project to VPS and deploy
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << EOF
-            PROJECT_DIR="/var/www/fydemy"
+            echo "➡️ Navigating to deployment directory..."
 
-            if [ ! -d "$PROJECT_DIR" ]; then
-              git clone https://devswithme:${{ secrets.PAT_TOKEN }}@github.com/devswithme/fydemy.git $PROJECT_DIR
+            if [ ! -d "fydemy/.git" ]; then
+              echo "📦 Cloning fresh copy of fydemy..."
+              rm -rf fydemy
+              git clone https://devswithme:${{ secrets.PAT_TOKEN }}@github.com/devswithme/fydemy.git
             else
-              cd $PROJECT_DIR && git pull
+              echo "🔄 Pulling latest changes..."
+              cd fydemy && git pull
             fi
 
-            cd $PROJECT_DIR
-
+            cd fydemy
             echo "📁 Current path: \$(pwd)"
-            echo "📄 Files:"
             ls -la
 
             echo "${{ secrets.ENV_FILE }}" > .env
@@ -48,6 +49,9 @@ jobs:
               curl -SL https://github.com/docker/compose/releases/download/v2.24.6/docker-compose-linux-x86_64 -o \$DOCKER_CONFIG/cli-plugins/docker-compose
               chmod +x \$DOCKER_CONFIG/cli-plugins/docker-compose
             fi
+
+            echo "🛠 Checking docker-compose.yml..."
+            ls -l docker-compose.yml || echo "❌ docker-compose.yml not found!"
 
             docker compose down
             docker compose up -d --build
