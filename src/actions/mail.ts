@@ -1,7 +1,6 @@
 "use server";
 
 import { createTransport } from "nodemailer";
-import path from "path";
 
 const transporter = createTransport({
   // @ts-expect-error host props err
@@ -26,15 +25,8 @@ export const sendMail = async ({
   return await transporter.sendMail({
     from: process.env.SMTP_USER,
     to,
-    bcc: process.env.SMTP_HOST,
+    bcc: process.env.SMTP_BCC,
     subject,
     html,
-    attachments: [
-      {
-        filename: "logo_mail.png",
-        path: path.join(process.cwd(), "public", "logo_mail.png"),
-        cid: "logo",
-      },
-    ],
   });
 };

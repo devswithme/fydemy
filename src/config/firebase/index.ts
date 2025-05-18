@@ -196,7 +196,8 @@ export const updateSubmission = async (subId: string) => {
 
   if (
     premiumStatus ||
-    (!premiumStatus && (!subs[key] || subs[key].length < 1))
+    (!premiumStatus && (!subs[key] || subs[key].length < 1)) ||
+    subs[key][subs[key].length - 1].split("^")[1] == "2"
   ) {
     if (!subs[key]) {
       subs[key] = [];
@@ -205,6 +206,9 @@ export const updateSubmission = async (subId: string) => {
       subs[key].push(value);
     }
     await set(subRef, subs);
+    return true;
+  } else {
+    return false;
   }
 };
 
