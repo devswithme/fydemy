@@ -7,6 +7,7 @@ import { ArrowLeft } from "lucide-react";
 import { signInWithGoogle } from "@/config/firebase/index";
 import { useRouter } from "next/navigation";
 import { setCookies } from "@/actions";
+import { logEvent } from "@/lib/utils";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -15,6 +16,9 @@ export default function RegisterPage() {
     try {
       const user = await signInWithGoogle();
       setCookies(user.uid);
+      logEvent("register_click", {
+        button_name: "Register",
+      });
       router.push("/dashboard"); // Redirect setelah login
     } catch (error) {
       console.error("Google Sign-In failed", error);

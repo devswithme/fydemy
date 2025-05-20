@@ -55,3 +55,9 @@ export function formatUnixTimestamp(unixSeconds: number) {
     hour12: false,
   }).format(date);
 }
+
+export const logEvent = (action: string, params: Record<string, any>) => {
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("event", action, params);
+  }
+};

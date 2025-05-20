@@ -30,6 +30,7 @@ import { addInvoice, auth, getUserInvoices } from "@/config/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { DialogTrigger } from "@radix-ui/react-dialog";
 import Link from "next/link";
+import { logEvent } from "@/lib/utils";
 
 const Pay = () => {
   const userAuth = useContext(AuthContext);
@@ -68,6 +69,10 @@ const Pay = () => {
       toast("Nomor HP tidak valid. Gunakan format seperti 6281234567890");
       return;
     }
+
+    logEvent("create_transaction", {
+      button_name: "Create a payment",
+    });
 
     const res = await createTransaction({
       form: {
